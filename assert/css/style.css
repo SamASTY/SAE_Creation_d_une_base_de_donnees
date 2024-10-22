@@ -1,5 +1,13 @@
 body {
-    background-color : #FFFDD0
+    background-color: #F3F7D4 ;
+}
+
+header {
+    background-color: #448D76   ;
+}
+
+footer {
+    background-color: #0c4732;
 }
 
 header h1{
@@ -11,7 +19,6 @@ nav ul {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: #fff;
     list-style-type: none;
 }
 
@@ -20,18 +27,39 @@ nav ul {
     flex-direction: column;
 }
 
-.bouton{
+ul.blocs_conclu {
+    padding: 0.7em;
+}
+
+
+.bouton_nav{
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    border: 2px dashed black;
+    border-left: 10px solid white;
+    border-right: 10px solid white;
+    border-bottom: 5px solid black;
+    border-top: 5px solid black;
+    padding-left: 10px;
+    padding-right : 10px;
+    background-color: #2b7e64;
+}
+
+.bouton_nav:hover {
+    background-color: #67B59F;
 }
 
 a {
     text-decoration: none;
     color: black;
 }
+
+.alignement_index {
+    display: flex;
+    flex-direction: row;;
+}
+
 
 .footer {
     display: flex;
