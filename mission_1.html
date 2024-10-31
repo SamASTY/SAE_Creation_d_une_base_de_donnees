@@ -3,30 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <title>Compte rendu SAE 1.04 - CREATION D'UNE BASE DE DONNEES</title>
-    <link rel="stylesheet" href="assert/css/style.css">
+    <link rel="stylesheet" href="assert/css/style_laptop.css">
 </head>
-<body>
+<body class="grid">
 <header>
-    <h1>Mission 1</h1>
-    <nav>
-        <ul>
-            <li class="bouton_nav"><a href="index.html">Présentation du projet</a></li>
-            <li>
-                <ul class="blocs_mission">
-                    <li class="bouton_nav"><a href="mission_1.html">Mission 1</a></li>
-                    <li class="bouton_nav"><a href="mission_2.html">Mission 2</a></li>
-                    <li class="bouton_nav"><a href="mission_3.html">Mission 3</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul class="blocs_conclu">
-                    <li class="bouton_nav"><a href="conclusion_bdd.html">Conclusion de l'étude de KDou</a></li>
-                    <li class="bouton_nav"><a href="conclusion_web.html">Conclusion du projet web</a></li>
-                </ul>
-            </li>
+    <h1>MISSION 1</h1>
+    <input type="checkbox" id="menuToggle">
+    <label for="menuToggle" class="menu-button">MENU</label>
+    <nav class="nav">
+        <p class="bouton_nav" id="presentation"><a href="index.html">Présentation du projet</a></p>
+        <ul class="blocs_mission">
+            <li class="bouton_nav"><a href="mission_1.html">Mission 1</a></li>
+            <li class="bouton_nav"><a href="mission_2.html">Mission 2</a></li>
+            <li class="bouton_nav"><a href="mission_3.html">Mission 3</a></li>
+        </ul>
+        <ul class="blocs_conclu">
+            <li class="bouton_nav"><a href="conclusion_bdd.html">Conclusion de l'étude de KDou</a></li>
+            <li class="bouton_nav"><a href="conclusion_web.html">Conclusion du projet web</a></li>
         </ul>
     </nav>
 </header>
+
+<section class="section_mission_p1">  <!-- faire autant de truc qu'il faut pour le bilan -->
+    <h1 class="titre">Contexte de la mission</h1>
+    <article>
+        <p>Dans cette première mission Kdou nous a fourni un classeur Excel avec la base de données de KDou. Nous avons
+            comme première objectif de commencer à s’approprier la base pour ensuite en extraire des données. Le Excel
+            est
+            composé de 6 feuilles différentes : <b>Fournisseur</b>, <b>Produit</b>
+            , <b>Catégorie</b>, <b>Clientèle</b>, <b>Commande</b>, <b>DétailCommande</b>.</p>
+    </article>
+</section>
+
+<section class="section_mission_p2">  <!-- faire autant de truc qu'il faut pour le bilan -->
+    <h1 class="titre">Bilan</h1>
+    <h2 class="titre">Liens entre les tables</h2>
+    <article class="flexible_center">
+        <p>Nous avons trouvé les clées primaires et secondaires des differentes tables :</p>
+        <!-- ici soit un figcaption (avec possiblement une liste) soit un alignement flex de l'article avec un tableau resutat --->
+        <!-- exemple tableau resultats il faudrai limité a 5 info par resultats en mode extraits...-->
+        <table class="resultat_sql">
+            <caption>Clées des Tables</caption>
+            <thead>
+            <th>Table</th>
+            <th>Clée(s) Primaire(s)</th>
+            <th>Clée(s) Etrangère(s)</th>
+            </thead>
+            <tr>
+                <th>Fournisseurs</th>
+                <td>N°fournisseur</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Produits</th>
+                <td>Ref Produit</td>
+                <td>#N°fournisseur,#Code Categorie</td>
+            </tr>
+            <tr>
+                <th>Catégorie</th>
+                <td>Code Categorie</td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <th>Clientèle</th>
+                <td>Code Client</td>
+
+                <td></td>
+            </tr>
+            <tr>
+                <th>Commande</th>
+                <td>N°Commande</td>
+                <td>#Code Client</td>
+            </tr>
+            <tr>
+                <th>DetailCommande</th>
+                <td>N°Commande, RefProduit</td>
+                <td>N°Commande, RefProduit</td>
+            </tr>
+        </table>
+    </article>
+    <hr class="separateur_horizontal_dashed">
+    <h2 class="titre">Incohérences de Données</h2>
+    <div class="flexible_row">
+        <article class="flexible_center">
+            <h3 class="question">Incohérences de Données</h3>
+            <dl class="liste_def_espace">
+                <dt>Variations orthographiques</dt>
+                <dd>Dans la table Clientèle, le nom de ville "Paris" est enregistré avec un "P" majuscule dans certaines
+                    entrées, et en minuscule dans d'autres. De même, "Versailles" est écrit une fois correctement, et
+                    une autre fois sous la forme incorrecte "Versaïlles".
+                </dd>
+                <dt>Doublons de pays</dt>
+                <dd>Dans la table Fournisseurs, certains pays apparaissent plusieurs fois sous différentes appellations,
+                    par exemple "États-Unis" et "USA". Ce problème entraîne des erreurs lors des requêtes et de
+                    l'analyse par pays.
+                </dd>
+                <dt>Absence de vérification pour les adresses</dt>
+                <dd>Par exemple, l'adresse du client « L’Ancienne Auberge » contient un code postal incompatible avec la
+                    ville indiquée, ce qui pourrait mener à des erreurs de livraison.
+                </dd>
+            </dl>
+        </article>
+        <div class="separateur_vertical_solid"></div>
+        <article class="flexible_center">
+            <h3 class="question">Formats Non Standardisés</h3>
+            <dl class="liste_def_espace">
+                <dt>Numéros de téléphone</dt>
+                <dd>Dans la table Fournisseurs, les numéros de téléphone apparaissent sous différents formats, certains
+                    avec des points, d’autres avec des tirets ou des espaces, et quelques-uns incluant les indicatifs.
+                    Cette absence de format unifié rend complexe l'automatisation de traitements de données tels que la
+                    recherche ou le filtrage par région.
+                </dd>
+                <dt>Quantité par unité</dt>
+                <dd>Dans Produits, la colonne Quantité par unité mélange des unités variées (par exemple, grammes,
+                    litres, pièces), sans distinction claire entre types de conditionnement. Certaines cellules
+                    contiennent même des chaînes de texte décrivant les quantités, compliquant l'utilisation de cette
+                    colonne pour des calculs ou des analyses quantitatives.
+                </dd>
+                <dt>Unités de prix</dt>
+                <dd>Les tables Produit et DétailCommande n'indiquent pas d'unité de prix (par exemple, euros ou
+                    dollars), ce qui pourrait entraîner des erreurs dans les calculs financiers ou la conversion de
+                    devises.
+                </dd>
+            </dl>
+        </article>
+    </div>
+</section>
+
+<section class="section_mission_p3">  <!-- faire autant de truc qu'il faut pour les amelioration -->
+    <h1 class="titre">Perspective d'amélioration</h1>
+    <article class="list_fleche">
+        <ul>
+            <li>Dans la table de répartition des fournisseurs par villes, il serait préférable de créer une table pour
+                les pays et une pour les villes, liées entre elles. Cela permettrait d’affecter les villes et pays aux
+                fournisseurs/clients de façon centralisée, évitant ainsi les redondances et facilitant les mises à jour.
+            </li>
+            <li>Créer une table dédiée aux différentes fonctions des contacts permettrait de standardiser ces
+                informations, facilitant la comptabilisation des fournisseurs par type de fonction. Cela réduirait les
+                doublons comme "représentant(e)" et "représentante".
+            </li>
+            <li>Il serait bénéfique de mettre en place un système de validation pour les adresses afin d'éviter les
+                erreurs comme celles constatées dans les informations de livraison de certains clients. Cela inclurait
+                la vérification des codes postaux et des régions.
+            </li>
+            <li>Créer des tables de référence ou des formats standardisés pour des informations comme les quantités et
+                les
+                unités de prix. Cela garantirait une cohérence des
+                données et faciliterait leur exploitation.
+            </li>
+            <li>Pour minimiser les erreurs, les références de dossier client devraient utiliser des codes clients plutôt
+                que des noms. Cela permettrait d’éviter des confusions liées aux variations de noms ou aux erreurs de
+                saisie.
+            </li>
+        </ul>
+        <hr class="separateur_horizontal_dashed">
+        <p>L'étude de cette base de données a révélé des incohérences et des besoins de standardisation, notamment dans
+            les formats de données et les relations entre tables. En intégrant des tables de référence et des
+            validations, la structure pourrait gagner en fiabilité et en cohérence, facilitant ainsi l'analyse et
+            l'exploitation des informations. Ces améliorations assureront une base de données plus robuste et adaptée
+            aux besoins futurs.</p>
+        <!-- ici soit un figcaption (avec possiblement une liste) soit un alignement flex de l'article avec un tableau resutat --->
+    </article>
+
+</section>
 
 
 <footer>
@@ -34,21 +174,21 @@
         <li>
             <h1>Membres de l'équipe</h1>
             <ul>
-                <li>ASTY Sam</li>
-                <li>BECH Yanis</li>
-                <li>JIN Mathieu</li>
-                <li>NGUYEN Quoc Dat</li>
+                <li>Sam</li>
+                <li>Yanis</li>
+                <li>Mathieu</li>
+                <li>Quoc Dat</li>
             </ul>
         </li>
-        <li>
+        <li id="navig">
             <h1>Navigation</h1>
             <ul>
                 <li><a href="index.html">Présentation du projet</a></li>
                 <li><a href="mission_1.html">Mission 1</a></li>
                 <li><a href="mission_2.html">Mission 2</a></li>
                 <li><a href="mission_3.html">Mission 3</a></li>
-                <li><a href="Conclusion_BDD.html">Conclusion de l'étude de KDou</a></li>
-                <li><a href="Conclusion_WEB.html">Conclusion du projet web</a></li>
+                <li><a href="conclusion_bdd.html">Conclusion de l'étude de KDou</a></li>
+                <li><a href="conclusion_web.html">Conclusion du projet web</a></li>
             </ul>
         </li>
         <li>
@@ -63,11 +203,10 @@
             </dl>
         </li>
     </ul>
-
     <p>&#169; 2024 - SAE 1.04 - Tous droits réservés</p>
-
-
 </footer>
+</body>
+</html>
 
 
 

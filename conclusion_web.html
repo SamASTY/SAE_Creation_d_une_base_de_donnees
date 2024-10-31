@@ -3,27 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Compte rendu SAE 1.04 - CREATION D'UNE BASE DE DONNEES</title>
-    <link rel="stylesheet" href="assert/css/style.css">
+    <link rel="stylesheet" href="assert/css/style_laptop.css">
 </head>
-<body>
+<body class="grid">
 <header>
     <h1>Conclusion du projet web</h1>
-    <nav>
-        <ul>
-            <li class="bouton_nav"><a href="index.html">Présentation du projet</a></li>
-            <li>
-                <ul class="blocs_mission">
-                    <li class="bouton_nav"><a href="mission_1.html">Mission 1</a></li>
-                    <li class="bouton_nav"><a href="mission_2.html">Mission 2</a></li>
-                    <li class="bouton_nav"><a href="mission_3.html">Mission 3</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul class="blocs_conclu">
-                    <li class="bouton_nav"><a href="conclusion_bdd.html">Conclusion de l'étude de KDou</a></li>
-                    <li class="bouton_nav"><a href="conclusion_web.html">Conclusion du projet web</a></li>
-                </ul>
-            </li>
+    <input type="checkbox" id="menuToggle">
+    <label for="menuToggle" class="menu-button">MENU</label>
+    <nav class="nav">
+        <p class="bouton_nav" id="presentation"><a href="index.html">Présentation du projet</a></p>
+        <ul class="blocs_mission">
+            <li class="bouton_nav"><a href="mission_1.html">Mission 1</a></li>
+            <li class="bouton_nav"><a href="mission_2.html">Mission 2</a></li>
+            <li class="bouton_nav"><a href="mission_3.html">Mission 3</a></li>
+        </ul>
+        <ul class="blocs_conclu">
+            <li class="bouton_nav"><a href="conclusion_bdd.html">Conclusion de l'étude de KDou</a></li>
+            <li class="bouton_nav"><a href="conclusion_web.html">Conclusion du projet web</a></li>
         </ul>
     </nav>
 </header>
@@ -34,21 +30,21 @@
         <li>
             <h1>Membres de l'équipe</h1>
             <ul>
-                <li>ASTY Sam</li>
-                <li>BECH Yanis</li>
-                <li>JIN Mathieu</li>
-                <li>NGUYEN Quoc Dat</li>
+                <li>Sam</li>
+                <li>Yanis</li>
+                <li>Mathieu</li>
+                <li>Quoc Dat</li>
             </ul>
         </li>
-        <li>
+        <li id="navig">
             <h1>Navigation</h1>
             <ul>
                 <li><a href="index.html">Présentation du projet</a></li>
                 <li><a href="mission_1.html">Mission 1</a></li>
                 <li><a href="mission_2.html">Mission 2</a></li>
                 <li><a href="mission_3.html">Mission 3</a></li>
-                <li><a href="Conclusion_BDD.html">Conclusion de l'étude de KDou</a></li>
-                <li><a href="Conclusion_WEB.html">Conclusion du projet web</a></li>
+                <li><a href="conclusion_bdd.html">Conclusion de l'étude de KDou</a></li>
+                <li><a href="conclusion_web.html">Conclusion du projet web</a></li>
             </ul>
         </li>
         <li>
@@ -63,11 +59,10 @@
             </dl>
         </li>
     </ul>
-
     <p>&#169; 2024 - SAE 1.04 - Tous droits réservés</p>
-
-
 </footer>
+</body>
+</html>
 
 
 

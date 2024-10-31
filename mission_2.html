@@ -3,52 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <title>Compte rendu SAE 1.04 - CREATION D'UNE BASE DE DONNEES</title>
-    <link rel="stylesheet" href="assert/css/style.css">
+    <link rel="stylesheet" href="assert/css/style_laptop.css">
 </head>
-<body>
+<body class="grid">
 <header>
-    <h1>Mission 2</h1>
-    <nav>
-        <ul>
-            <li class="bouton_nav"><a href="index.html">Présentation du projet</a></li>
-            <li>
-                <ul class="blocs_mission">
-                    <li class="bouton_nav"><a href="mission_1.html">Mission 1</a></li>
-                    <li class="bouton_nav"><a href="mission_2.html">Mission 2</a></li>
-                    <li class="bouton_nav"><a href="mission_3.html">Mission 3</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul class="blocs_conclu">
-                    <li class="bouton_nav"><a href="conclusion_bdd.html">Conclusion de l'étude de KDou</a></li>
-                    <li class="bouton_nav"><a href="conclusion_web.html">Conclusion du projet web</a></li>
-                </ul>
-            </li>
+    <h1>MISSION 2</h1>
+    <input type="checkbox" id="menuToggle">
+    <label for="menuToggle" class="menu-button">MENU</label>
+    <nav class="nav">
+        <p class="bouton_nav" id="presentation"><a href="index.html">Présentation du projet</a></p>
+        <ul class="blocs_mission">
+            <li class="bouton_nav"><a href="mission_1.html">Mission 1</a></li>
+            <li class="bouton_nav"><a href="mission_2.html">Mission 2</a></li>
+            <li class="bouton_nav"><a href="mission_3.html">Mission 3</a></li>
+        </ul>
+        <ul class="blocs_conclu">
+            <li class="bouton_nav"><a href="conclusion_bdd.html">Conclusion de l'étude de KDou</a></li>
+            <li class="bouton_nav"><a href="conclusion_web.html">Conclusion du projet web</a></li>
         </ul>
     </nav>
 </header>
 
+<section class="section_mission_p1">
+    <h1 class="titre">Context de la mission</h1>
+    <article>
+        <p>Dans cette mission, nous avions comme objectif de commencer à exploiter la même base de données qu’à la
+            mission 1, la base de données de l’entreprises Kdou. Cependant ici nous devions utiliser le logiciel Low
+            Code Acces pour analyser la base et obtenir des indicateurs intéressants à l’aide du mode de création
+            graphique QBE (Query By Example),ayant une première introduction au SQL. La base de données est composée de
+            6 relations : <b>Fournisseur</b>, <b>Produit</b>
+            , <b>Categorie</b>, <b>Clientele</b>, <b>Commande</b>, <b>DetailCommande</b>.</p>
+    </article>
+</section>
+
+<section class="section_mission_p2">
+    <h1 class="titre">Indicateur intéressant relever dans la base</h1>
+    <h2 class="titre">Produit Allemand et Italiens inférieurs à 50€</h2>
+    <div class="flexible_row">
+        <article>
+            <h3 class="question">Quels sont les produits d’Italie ou d’Allemagne vendus 50€ ou moins ?</h3>
+            <figure>
+                <figcaption>Tableau de résultats de la requête</figcaption>
+                <img src="/assert/img/prod_all_it_inf_50.png" alt="Tableau de résultats de la requête">
+            </figure>
+        </article>
+        <div class="separateur_vertical_solid"></div>
+        <aside>
+            <p>Nous avons cherché les produits provenant d’Italie ou d’Allemagne (ayant l’adresse du fournisseur dans un
+                des deux pays) ayant un prix de vente unitaire à 50€ ou moins.</p>
+            <p>Voici le code généré par cette requête.<br><code>SELECT DISTINCT Produit.NomProd, Produit.PrixUnit,
+                Fournisseur.Contact, Fournisseur.Ville,
+                Fournisseur.Pays
+                FROM Fournisseur INNER JOIN (Produit INNER JOIN DetailCommande ON Produit.RefProd =
+                DetailCommande.RefProd) ON Fournisseur.NoFour = Produit.NoFour
+                WHERE (((Fournisseur.Pays)="Allemagne" Or (Fournisseur.Pays)="Italie"))
+                ORDER BY Produit.PrixUnit;
+            </code></p>
+        </aside>
+    </div>
+</section>
+
+<section class="section_mission_p3">
+    <h2 class="titre">Produits de type viandes sur Paris</h2>
+    <div class="flexible_row">
+        <article class="mission2">
+            <p>Nous avons cherché les produits de type viandes ayant été commandés par un client ayant son adresse sur
+                Paris.</p>
+            <p>Voici le code généré par cette requête.<br><code>SELECT DISTINCT Produit.NomProd, Categorie.NomCateg,
+                Client.VilleCli
+                FROM Categorie INNER JOIN ((Client INNER JOIN Commande ON Client.CodeCli = Commande.CodeCli) INNER JOIN
+                (Produit INNER JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd) ON Commande.NoCom =
+                DetailCommande.NoCom) ON Categorie.CodeCateg = Produit.CodeCateg
+                WHERE (((Categorie.NomCateg)="Viandes") AND ((Client.VilleCli)="Paris"));
+
+            </code></p>
+        </article>
+        <div class="separateur_vertical_solid"></div>
+        <aside class="mission2">
+            <h3 class="question">Quelles les produits de type viande livrés à Paris ? </h3>
+            <table class="resultat_sql">
+                <caption>Tableau résultat de la requête</caption>
+                <thead>
+                <th>NomProd</th>
+                <th>NomCateg</th>
+                <th>VilleCli</th>
+                </thead>
+                <tr>
+                    <td>Alide Mutton</td>
+                    <td>Viandes</td>
+                    <td>Paris</td>
+                </tr>
+                <tr>
+                    <td>Mishi Kobe Niku</td>
+                    <td>Viandes</td>
+                    <td>Paris</td>
+                </tr>
+                <tr>
+                    <td>Pâté chinois</td>
+                    <td>Viandes</td>
+                    <td>Paris</td>
+                </tr>
+                <tr>
+                    <td>Perth Pasties</td>
+                    <td>Viandes</td>
+                    <td>Paris</td>
+                </tr>
+                <tr>
+                    <td>Thüringer Rostbratwurst</td>
+                    <td>Viandes</td>
+                    <td>Paris</td>
+                </tr>
+                <tr>
+                    <td>Tourtière crème forestière</td>
+                    <td>Viandes</td>
+                    <td>Paris</td>
+                </tr>
+
+
+            </table>
+        </aside>
+    </div>
+</section>
+
+<section class="section_mission_p4">
+    <h2 class="titre">Commande du client PAVBO</h2>
+    <div class="flexible_row">
+        <article>
+            <h3 class="question">Quels produits (nom, catégorie et prix) a commandé le client Mikal Pavbo ?</h3>
+            <figure>
+                <figcaption>Extrait du tableau de résultats de la requête</figcaption>
+                <img src="/assert/img/commande_pavbo.png" alt="Extrait du tableau de résultats de la requête">
+            </figure>
+        </article>
+        <div class="separateur_vertical_solid"></div>
+        <aside>
+            <p>Nous avons cherché toutes les commandes qu’à fait le client avec le code client PAVBO, ce dernier étant
+                celui du client Mikal Pavbo.</p>
+            <p>Voici le code généré par cette requête.<br><code>SELECT DISTINCT Produit.NomProd, Categorie.NomCateg,
+                Produit.PrixUnit
+                FROM Categorie INNER JOIN (Client INNER JOIN (Commande INNER JOIN (Produit INNER JOIN DetailCommande ON
+                Produit.RefProd = DetailCommande.RefProd) ON Commande.NoCom = DetailCommande.NoCom) ON Client.CodeCli =
+                Commande.CodeCli) ON Categorie.CodeCateg = Produit.CodeCateg
+                WHERE (((Client.CodeCli)="PAVBO"))
+            </code></p>
+        </aside>
+    </div>
+</section>
+
+<section class="section_mission_p5">
+    <h2 class="titre">Prix moyen, maximum et minimum des produits</h2>
+    <div class="flexible_row">
+        <article class="mission2">
+            <p>Nous avons fait un calcul sur la base de tous les produits de la base pour avoir la moyenne de prix, le
+                maximum et le mimum.</p>
+            <p>Voici le code généré par cette requête.<br><code>SELECT Avg(Produit.PrixUnit) AS MoyenneDePrixUnit,
+                Min(Produit.PrixUnit) AS MinDePrixUnit, Max(Produit.PrixUnit) AS MaxDePrixUnit
+                FROM Produit;
+
+
+            </code></p>
+        </article>
+        <div class="separateur_vertical_solid"></div>
+        <aside class="mission2">
+            <h3 class="question">Donner le prix moyen de vente des produits, le prix minimum et le prix maximum. </h3>
+            <table class="resultat_sql">
+                <caption>Tableau résultat de la requête</caption>
+                <thead>
+                <th>MoyenneDePrixUnit</th>
+                <th>MinDePrixUnit</th>
+                <th>MaxDePrixUnit</th>
+                </thead>
+                <tr>
+                    <td>33.54€</td>
+                    <td>2.08€</td>
+                    <td>320.00€</td>
+                </tr>
+            </table>
+        </aside>
+    </div>
+</section>
 
 <footer>
     <ul class="footer">
         <li>
             <h1>Membres de l'équipe</h1>
             <ul>
-                <li>ASTY Sam</li>
-                <li>BECH Yanis</li>
-                <li>JIN Mathieu</li>
-                <li>NGUYEN Quoc Dat</li>
+                <li>Sam</li>
+                <li>Yanis</li>
+                <li>Mathieu</li>
+                <li>Quoc Dat</li>
             </ul>
         </li>
-        <li>
+        <li id="navig">
             <h1>Navigation</h1>
             <ul>
                 <li><a href="index.html">Présentation du projet</a></li>
                 <li><a href="mission_1.html">Mission 1</a></li>
                 <li><a href="mission_2.html">Mission 2</a></li>
                 <li><a href="mission_3.html">Mission 3</a></li>
-                <li><a href="Conclusion_BDD.html">Conclusion de l'étude de KDou</a></li>
-                <li><a href="Conclusion_WEB.html">Conclusion du projet web</a></li>
+                <li><a href="conclusion_bdd.html">Conclusion de l'étude de KDou</a></li>
+                <li><a href="conclusion_web.html">Conclusion du projet web</a></li>
             </ul>
         </li>
         <li>
@@ -63,11 +217,10 @@
             </dl>
         </li>
     </ul>
-
     <p>&#169; 2024 - SAE 1.04 - Tous droits réservés</p>
-
-
 </footer>
+</body>
+</html>
 
 
 
