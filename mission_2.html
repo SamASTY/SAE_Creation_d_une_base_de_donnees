@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Compte rendu SAE 1.04 - CREATION D'UNE BASE DE DONNEES</title>
-    <link rel="stylesheet" href="assert/css/style_laptop.css">
+    <link rel="stylesheet" href="assert/css/style_Laptop.css" media="screen and (min-width: 992px)">
+    <link rel="stylesheet" href="assert/css/style_Mobile_p.css" media="screen and (max-width: 991px)">
 </head>
 <body class="grid">
 <header>
@@ -67,19 +68,6 @@
     <h2 class="titre">Produits de type viandes sur Paris</h2>
     <div class="flexible_row">
         <article class="mission2">
-            <p>Nous avons cherché les produits de type viandes ayant été commandés par un client ayant son adresse sur
-                Paris.</p>
-            <p>Voici le code généré par cette requête.<br><code>SELECT DISTINCT Produit.NomProd, Categorie.NomCateg,
-                Client.VilleCli
-                FROM Categorie INNER JOIN ((Client INNER JOIN Commande ON Client.CodeCli = Commande.CodeCli) INNER JOIN
-                (Produit INNER JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd) ON Commande.NoCom =
-                DetailCommande.NoCom) ON Categorie.CodeCateg = Produit.CodeCateg
-                WHERE (((Categorie.NomCateg)="Viandes") AND ((Client.VilleCli)="Paris"));
-
-            </code></p>
-        </article>
-        <div class="separateur_vertical_solid"></div>
-        <aside class="mission2">
             <h3 class="question">Quelles les produits de type viande livrés à Paris ? </h3>
             <table class="resultat_sql">
                 <caption>Tableau résultat de la requête</caption>
@@ -118,9 +106,20 @@
                     <td>Viandes</td>
                     <td>Paris</td>
                 </tr>
-
-
             </table>
+        </article>
+        <div class="separateur_vertical_solid"></div>
+        <aside class="mission2">
+            <p>Nous avons cherché les produits de type viandes ayant été commandés par un client ayant son adresse sur
+                Paris.</p>
+            <p>Voici le code généré par cette requête.<br><code>SELECT DISTINCT Produit.NomProd, Categorie.NomCateg,
+                Client.VilleCli
+                FROM Categorie INNER JOIN ((Client INNER JOIN Commande ON Client.CodeCli = Commande.CodeCli) INNER JOIN
+                (Produit INNER JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd) ON Commande.NoCom =
+                DetailCommande.NoCom) ON Categorie.CodeCateg = Produit.CodeCateg
+                WHERE (((Categorie.NomCateg)="Viandes") AND ((Client.VilleCli)="Paris"));
+            </code></p>
+
         </aside>
     </div>
 </section>
@@ -128,7 +127,7 @@
 <section class="section_mission_p4">
     <h2 class="titre">Commande du client PAVBO</h2>
     <div class="flexible_row">
-        <article>
+        <article class="mission2">
             <h3 class="question">Quels produits (nom, catégorie et prix) a commandé le client Mikal Pavbo ?</h3>
             <figure>
                 <figcaption>Extrait du tableau de résultats de la requête</figcaption>
@@ -136,7 +135,7 @@
             </figure>
         </article>
         <div class="separateur_vertical_solid"></div>
-        <aside>
+        <aside class="mission2">
             <p>Nous avons cherché toutes les commandes qu’à fait le client avec le code client PAVBO, ce dernier étant
                 celui du client Mikal Pavbo.</p>
             <p>Voici le code généré par cette requête.<br><code>SELECT DISTINCT Produit.NomProd, Categorie.NomCateg,
@@ -154,17 +153,6 @@
     <h2 class="titre">Prix moyen, maximum et minimum des produits</h2>
     <div class="flexible_row">
         <article class="mission2">
-            <p>Nous avons fait un calcul sur la base de tous les produits de la base pour avoir la moyenne de prix, le
-                maximum et le mimum.</p>
-            <p>Voici le code généré par cette requête.<br><code>SELECT Avg(Produit.PrixUnit) AS MoyenneDePrixUnit,
-                Min(Produit.PrixUnit) AS MinDePrixUnit, Max(Produit.PrixUnit) AS MaxDePrixUnit
-                FROM Produit;
-
-
-            </code></p>
-        </article>
-        <div class="separateur_vertical_solid"></div>
-        <aside class="mission2">
             <h3 class="question">Donner le prix moyen de vente des produits, le prix minimum et le prix maximum. </h3>
             <table class="resultat_sql">
                 <caption>Tableau résultat de la requête</caption>
@@ -179,6 +167,15 @@
                     <td>320.00€</td>
                 </tr>
             </table>
+        </article>
+        <div class="separateur_vertical_solid"></div>
+        <aside class="mission2">
+            <p>Nous avons fait un calcul sur la base de tous les produits de la base pour avoir la moyenne de prix, le
+                maximum et le mimum.</p>
+            <p>Voici le code généré par cette requête.<br><code>SELECT Avg(Produit.PrixUnit) AS MoyenneDePrixUnit,
+                Min(Produit.PrixUnit) AS MinDePrixUnit, Max(Produit.PrixUnit) AS MaxDePrixUnit
+                FROM Produit;
+            </code></p>
         </aside>
     </div>
 </section>

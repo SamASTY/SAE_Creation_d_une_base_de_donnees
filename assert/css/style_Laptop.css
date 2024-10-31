@@ -2,6 +2,7 @@
 body {
     background-color: #F3F7D4;
     margin: 0;
+    width: 100%;
 }
 
 .grid {
@@ -9,12 +10,14 @@ body {
     grid-template-columns: 1fr 1fr 1fr; /* Trois colonnes de largeur égale */
     grid-template-rows: auto auto 1fr; /* Deux lignes auto-hauteur et le reste dans la 3ème */
     gap: 10px;
+    width: 100%;
 }
 
 a {
     text-decoration: none;
     color: black;
 }
+
 
 /* Style du header*/
 header {
@@ -132,47 +135,45 @@ nav ul li a {
 .section_mission_p1 {
     grid-column: 1 / 4;
     grid-row: 2;
-    margin-top: 7em;
-    margin-left: 2em;
-    padding-right: 2em;
-    font-size: 20px;
 }
 
 .section_mission_p2 {
     grid-column: 1 / 4;
     grid-row: 3;
-    margin-top: 7em;
-    margin-left: 2em;
-    padding-right: 2em;
-    font-size: 20px;
 }
 
 .section_mission_p3 {
     grid-column: 1 / 4;
     grid-row: 4;
-    margin-top: 7em;
-    margin-left: 2em;
-    padding-right: 2em;
-    font-size: 20px;
 }
 
 .section_mission_p4 {
     grid-column: 1 / 4;
     grid-row: 5;
-    margin-top: 7em;
-    margin-left: 2em;
-    padding-right: 2em;
-    font-size: 20px;
 }
 
 .section_mission_p5 {
     grid-column: 1 / 4;
     grid-row: 6;
+}
+
+.section_mission_p1, .section_mission_p2, .section_mission_p3,
+.section_mission_p4, .section_mission_p5 {
     margin-top: 7em;
     margin-left: 2em;
     padding-right: 2em;
+    width: 95%;
+    box-sizing: border-box;
+}
+
+p {
     font-size: 20px;
 }
+
+code {
+    font-size: 80%;
+}
+
 
 .separateur_horizontal_solid {
     border: none;
@@ -239,6 +240,7 @@ h1.titre {
 .flexible_center > .resultat_sql {
     width: 100%;
     max-width: 40em;
+
 }
 
 h2.titre {
@@ -279,14 +281,27 @@ h2.titre {
     color: black;
     font-size: 1.2em;
 }
+img{
+    width: 40vw;
+    height: auto;
+}
 
 
 /* Style pour la mission 1 */
 
 /* Style pour la mission 2 */
 
+.mission2 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 .mission2 .resultat_sql {
-    width: 30em;
+    width: 40vw;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
 /* Style pour la mission 3 */
@@ -298,9 +313,10 @@ h2.titre {
 
 /* Style du footer */
 footer {
-    grid-column: 1 / 4;
+    grid-column: 1 / -1;
     grid-row: 7;
     background-color: #0c4732;
+    width: 100%;
 }
 
 footer li {
