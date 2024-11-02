@@ -18,7 +18,6 @@ a {
     color: black;
 }
 
-
 /* Style du header*/
 header {
     grid-column: 1 / 4;
@@ -47,19 +46,30 @@ header h1 {
     cursor: pointer;
     font-size: 16px;
     display: block;
-    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    border: black solid 1px;
+    border-radius: 8px;
+    box-shadow: -1px -2px black;
 }
 
 .nav {
     display: none;
-    padding: 10px;
+    padding-top: 2em;
     background-color: #448D76;
+}
+
+#menuToggle:checked + label.menu-button{
+    background-color: #67B59F;
 }
 
 #menuToggle:checked + label + .nav {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
+
 }
 
 nav ul {
@@ -81,14 +91,23 @@ nav ul li a {
 
 /* Style des boutons de navigations*/
 .bouton_nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    border: 2px dashed black;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 4px black;
     font-size: 15px;
     background-color: #2b7e64;
+    max-width: 100%;
+    cursor: pointer;
+    padding: 0;
+}
+
+.bouton_nav a {
+    display: block;
+    width: 100%;
+    height: 100%;
     padding: 10px;
+    box-sizing: border-box;
+    color: black;
 }
 
 .bouton_nav:hover {
@@ -102,16 +121,17 @@ nav ul li a {
 }
 
 #presentation {
-    padding: 1em 5em;
+    padding: 0.5em 2.5em;
 }
 
 .blocs_mission .bouton_nav {
-    padding: 5px 9em;
+    padding: 5px 4.5em;
 }
 
 .blocs_conclu .bouton_nav {
-    padding: 1em 8em;
+    padding: 1em 4em;
 }
+
 
 /* Style pour la page de presentation */
 #section_index {
@@ -342,6 +362,8 @@ footer p {
 }
 
 footer a:hover {
+    padding: 5px;
+    border-radius:10px ;
     background-color: #116346;
     color: white;
 }
