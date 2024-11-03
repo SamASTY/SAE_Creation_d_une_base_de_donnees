@@ -194,13 +194,9 @@ p {
     font-size: 15px;
 }
 
-
-
 code {
     font-size: 80%;
 }
-
-
 
 .separateur_horizontal_solid {
     border: none;
@@ -298,13 +294,13 @@ img{
 
 /* Style pour la mission 2 */
 
-.mission2 {
+.mission {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
 }
 
-.mission2 .resultat_sql {
+.mission .resultat_sql {
     width: 40vw;
     max-width: 100%;
     box-sizing: border-box;
@@ -312,6 +308,50 @@ img{
 }
 
 /* Style pour la mission 3 */
+
+.nav_mission3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.bouttonmission3 {
+    font-size: 18px;
+    margin: 0 5px;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.bouttonmission3:hover {
+    border: 1px solid #ccc;
+}
+
+
+.section_mission_p3 #dessertboissons,
+.section_mission_p3 #offrekdou,
+.section_mission_p3 #provenanceproduits,
+.section_mission_p3 #clientele,
+.section_mission_p5 #Sam,
+.section_mission_p5 #Yanis,
+.section_mission_p5 #Mathieu,
+.section_mission_p5 #Dat {
+    padding: 20px;
+    margin: 10px 0;
+}
+
+#dessertboissons:not(:target),
+#offrekdou:not(:target),
+#provenanceproduits:not(:target),
+#clientele:not(:target),
+#Sam:not(:target),
+#Yanis:not(:target),
+#Mathieu:not(:target),
+#Dat:not(:target) {
+    display: none; /* Masque les sections qui ne sont pas ciblées */
+}
 
 /* Style pour la conclusion BDD */
 
