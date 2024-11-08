@@ -24,13 +24,14 @@
         </ul>
     </nav>
 </header>
-
 <section class="section_mission_p1">
     <h1 class="titre">Context de la mission</h1>
     <article>
         <p>Dans cette mission notre but est d’analyser les achats de notre client sur les produits pertinent tous en
-            exploitant les données de ses produits et que le prix et les fournisseurs. Dans chaque cas nous avons un /
-            des critère(s) de recherche pour étudier un public précis. Nous avons accès à la base de données de Kdou que
+            exploitant les données de ses produits et que le prix et les fournisseurs. Dans chaque cas nous avons un
+            /
+            des critère(s) de recherche pour étudier un public précis. Nous avons accès à la base de données de Kdou
+            que
             nous avons bien prise en mains, et nous devons effectuer nos recherches à l’aide du langage SQL. Nous
             travaillons sur la base de données, cette dernière composée de de
             6 relations : <b>Fournisseur</b>, <b>Produit</b>
@@ -44,33 +45,75 @@
         <a href="#dessertboissons" class="bouttonmission3">Desserts / Boissons</a>
         <a href="#offrekdou" class="bouttonmission3">Offre de KDou</a>
         <a href="#provenanceproduits" class="bouttonmission3">Provenance des produits</a>
-        <a href="#clientele" class="bouttonmission3">Clientèle</a>
+        <a href="#clientele" class="bouttonmission3">Clientèle / Remises</a>
     </div>
 </section>
 
 <section class="section_mission_p3" id="dessertboissons">
     <h2>Desserts / Boissons</h2>
     <div class="flexible_row">
-        <article>
-            <h3 class="question">v1</h3>
-            <p>resultat screen ou tableau</p>
+        <article class="mission">
+            <h3 class="question">Combien y a-t-il des produits correspondants vendus 50€ ou plus ? </h3>
+            <p> Cette requête affiche les produits de catégorie Desserts ou Boissons ayant un prix unitaire supérieure à
+                50€, et elle affiche le nom de produits avec leur prix et leur pays d’origine.</p>
+            <figure>
+                <figcaption>Extrait du tableau de résultats de la requête</figcaption>
+                <img src="/assert/img/m3/extr_prod_50.png" alt="Extrait du tableau de résultats de la requête">
+            </figure>
         </article>
         <div class="separateur_vertical_solid"></div>
-        <aside>
-            <p>INTERPRETATION</p>
-            <p>Voici le code généré par cette requête.<br><code>CODECODECODESQLSQLSQL
+        <aside class="mission">
+            <p> Elle est constituée d’une double jointure pour avoir accès au tables Catégorie, Produits et
+                Fournisseurs, dans laquelle elle va sélectionner après coup les produits de type Boissons et Dessert
+                avant un prix supérieure ou égal a 50€.</p>
+            <p>Voici le code généré par cette requête.<br><code>
+                SELECT p.NomProd, p.PrixUnit, f.Pays
+                FROM Fournisseur AS f
+                INNER JOIN (Categorie AS c
+                INNER JOIN Produit AS p
+                ON c.CodeCateg = p.CodeCateg)
+                ON f.NoFour = p.NoFour
+                WHERE (((p.prixUnit)>=50)
+                AND ((c.NomCateg)='Desserts'
+                OR (c.NomCateg)='Boissons'));
+
             </code></p>
         </aside>
     </div>
     <div class="flexible_row">
-        <article>
-            <h3 class="question">v2</h3>
-            <p>resultat screen ou tableau</p>
+        <article class="mission">
+            <h3 class="question">On veut le chiffre d’affaire généré par catégorie desserts ou catégorie. </h3>
+            <p>Cette requête affiche le chiffre d’affaires générale par les produits de catégorie boissons et ceux de
+                catégorie dessert séparément.</p>
+            <table class="resultat_sql">
+                <caption>Tableau résultat de la requête</caption>
+                <thead>
+                <th>NomCateg</th>
+                <th>Chiffre_daffaire</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>Boissons</th>
+                    <td>1 889.41</td>
+                </tr>
+                <tr>
+                    <th>Desserts</th>
+                    <td>361.4668</td>
+                </tr>
+                </tbody>
+            </table>
         </article>
         <div class="separateur_vertical_solid"></div>
-        <aside>
-            <p>INTERPRETATION</p>
-            <p>Voici le code généré par cette requête.<br><code>CODECODECODESQLSQLSQL
+        <aside class="mission">
+            <p>La requête est constituée d’un groupement entre les catégories et le chiffre d’affaires, ce dernier
+                calculer par la somme des prix unitaire de chaque produits.</p>
+            <p>Voici le code généré par cette requête.<br><code>
+                SELECT c.NomCateg , Sum(p.PrixUnit) AS Chiffre_daffaire
+                FROM Categorie AS c
+                INNER JOIN produit AS p
+                ON c.CodeCateg = p.CodeCateg
+                WHERE c.NomCateg IN ("Desserts", "Boissons")
+                GROUP BY c.NomCateg;
             </code></p>
         </aside>
     </div>
@@ -79,26 +122,90 @@
 <section class="section_mission_p3" id="offrekdou">
     <h2>Offre de KDou</h2>
     <div class="flexible_row">
-        <article>
-            <h3 class="question">v1</h3>
-            <p>resultat screen ou tableau</p>
+        <article class="mission">
+            <h3 class="question">Donner des informations sur les fournisseurs qui proposent des produits qui ne sont pas
+                commandés actuellement ?</h3>
+            <p>Nous avons affiché le nom du fournisseur, le nom du contact et sa fonction dans la société fournisseur et
+                enfin l’adresses avec son pays du fournisseur, pour la société ayant un ou des produits n’ayant pas été
+                commander dans la base.</p>
+            <figure>
+                <figcaption>Tableau de résultats de la requête</figcaption>
+                <img src="/assert/img/m3/requ_pas_command.png" alt="Tableau de résultats de la requête">
+            </figure>
         </article>
         <div class="separateur_vertical_solid"></div>
-        <aside>
-            <p>INTERPRETATION</p>
-            <p>Voici le code généré par cette requête.<br><code>CODECODECODESQLSQLSQL
+        <aside class="mission">
+            <p>Notre requête fait une soustraction entre les produits existants et ceux ayant déjà été commander, en
+                affichant de façon unique les entreprises ayant un produit ou plus non commander avec une jointure.</p>
+            <p>Voici le code généré par cette requête.<br><code>
+                SELECT DISTINCT
+                f.Societe,
+                f.Contact,
+                f.Fonction,
+                f.Adresse,
+                f.Pays
+                FROM Fournisseur AS f
+                INNER JOIN Produit AS p
+                ON f.NoFour = p.NoFour
+                WHERE p.RefProd
+                NOT IN (
+                SELECT dc.RefProd
+                FROM DetailCommande AS dc
+                );
+
             </code></p>
         </aside>
     </div>
     <div class="flexible_row">
-        <article>
-            <h3 class="question">v2</h3>
-            <p>resultat screen ou tableau</p>
+        <article class="mission">
+            <h3 class="question">Combien y –a-t-il de produits non commandés par catégorie ? </h3>
+            <p>Nous avons cherché la somme des produits n’ayant pas été commander par catégories dans la base de
+                données.</p>
+            <table class="resultat_sql">
+                <caption>Tableau résultat de la requête</caption>
+                <thead>
+                <th>NomCateg</th>
+                <th>Non_commandee</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>Boissons</th>
+                    <td>27</td>
+                </tr>
+                <tr>
+                    <th>Condiments</th>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>Desserts</th>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>Pâtes et céréales</th>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>Poissons et fruits de mer</th>
+                    <td>2</td>
+                </tr>
+                </tbody>
+            </table>
         </article>
         <div class="separateur_vertical_solid"></div>
-        <aside>
-            <p>INTERPRETATION</p>
-            <p>Voici le code généré par cette requête.<br><code>CODECODECODESQLSQLSQL
+        <aside class="mission">
+            <p>Nous avons fait un groupement entre le nom des catégories et la sommes des produits n’ayant pas été
+                commander dans cette catégorie avec une jointure de table.</p>
+            <p>Voici le code généré par cette requête.<br><code>
+                SELECT c.NomCateg,
+                COUNT(c.CodeCateg) AS Non_commandee
+                FROM (Categorie AS c
+                INNER JOIN Produit AS p
+                ON c.CodeCateg = p.CodeCateg)
+                LEFT JOIN DetailCommande AS dc
+                ON p.RefProd = dc.RefProd
+                WHERE (((dc.NoCom) Is Null))
+                GROUP BY c.NomCateg;
+
             </code></p>
         </aside>
     </div>
@@ -107,54 +214,188 @@
 <section class="section_mission_p3" id="provenanceproduits">
     <h2>Provenance des produits</h2>
     <div class="flexible_row">
-        <article>
-            <h3 class="question">v1</h3>
-            <p>resultat screen ou tableau</p>
+        <article class="mission">
+            <h3 class="question">Quels fournisseurs vendent uniquement des boissons ou des desserts ?</h3>
+            <p>Nous avons cherché les fournisseurs ne vendant soit des desserts soit des boissons uniquement.</p>
+            <figure>
+                <figcaption>Tableau de résultats de la requête</figcaption>
+                <img src="/assert/img/m3/requ_boisson_ou_dessert.png" alt="Tableau de résultats de la requête">
+            </figure>
         </article>
         <div class="separateur_vertical_solid"></div>
-        <aside>
-            <p>INTERPRETATION</p>
-            <p>Voici le code généré par cette requête.<br><code>CODECODECODESQLSQLSQL
+        <aside class="mission">
+            <p>La requête fonctionne avec une union entre les fournisseurs ne vendant, uniquement, que des boissons, et
+                ceux ne vendant, uniquement, que des desserts avec des soustractions pour avoir les fournisseurs ne
+                vendant, uniquement ,qu’un type de catégories. Elle affiche le nom des sociétés.</p>
+            <p>Voici le code généré par cette requête.<br><code>
+                SELECT f.Societe
+                FROM Fournisseur AS f
+                WHERE f.NoFour NOT IN (
+                SELECT p.NoFour
+                FROM Produit AS p
+                WHERE p.CodeCateg <> 1
+                )
+                AND f.NoFour IN (
+                SELECT p.NoFour
+                FROM Produit AS p
+                WHERE p.CodeCateg = 1
+                )
+                UNION
+                SELECT f.Societe
+                FROM Fournisseur AS f
+                WHERE f.NoFour NOT IN (
+                SELECT p.NoFour
+                FROM Produit AS p
+                WHERE p.CodeCateg <> 3
+                )
+                AND f.NoFour IN (
+                SELECT p.NoFour
+                FROM Produit AS p
+                WHERE p.CodeCateg = 3
+                );
+
+
             </code></p>
         </aside>
     </div>
     <div class="flexible_row">
-        <article>
-            <h3 class="question">v2</h3>
-            <p>resultat screen ou tableau</p>
+        <article class="mission">
+            <h3 class="question">Quels sont les fournisseurs qui vendent les deux produits boissons et desserts ?</h3>
+            <p>Nous avons fait une requête affichant les fournisseurs vendant que des boissons et que des desserts, mais
+                pas uniquement l’un ou l’autre.</p>
+            <table class="resultat_sql">
+                <caption>Tableau résultat de la requête</caption>
+                <thead>
+                <th>Societe</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Karkki Oy</td>
+                </tr>
+                <tr>
+                    <td>Refrescos Americanas LTDA</td>
+                </tr>
+                </tbody>
+            </table>
         </article>
         <div class="separateur_vertical_solid"></div>
-        <aside>
-            <p>INTERPRETATION</p>
-            <p>Voici le code généré par cette requête.<br><code>CODECODECODESQLSQLSQL
+        <aside class="mission">
+            <p>La requête est constituée d’une soustraction entre les fournisseurs vendant des boissons et des desserts,
+                par ceux vendant des produits d’autre catégories. Elle affiche le nom des sociétés fournisseurs.</p>
+            <p>Voici le code généré par cette requête.<br><code>
+                SELECT DISTINCT f.Societe
+                FROM Fournisseur AS f
+                WHERE f.NoFour IN (
+                SELECT p1.NoFour
+                FROM Produit AS p1
+                WHERE p1.CodeCateg = 1
+                )
+                AND f.NoFour IN (
+                SELECT p2.NoFour
+                FROM Produit AS p2
+                WHERE p2.CodeCateg = 3
+                )
+                AND f.NoFour NOT IN (
+                SELECT p3.NoFour
+                FROM Produit AS p3
+                WHERE p3.CodeCateg NOT IN (1, 3)
+                );
+
+
             </code></p>
         </aside>
     </div>
 </section>
 
 <section class="section_mission_p3" id="clientele">
-    <h2>Clientèle</h2>
+    <h2>Clientèle / Remises</h2>
     <div class="flexible_row">
-        <article>
-            <h3 class="question">v1</h3>
-            <p>resultat screen ou tableau</p>
+        <article class="mission">
+            <h3 class="question">Certains clients n’ont jamais eu la remise la plus importante de 25%. Qui sont-ils
+                ?</h3>
+            <p>Nous avons cherché les clients n’ayant jamais bénéficier de la remise la plus haute sois de 25%.</p>
+            <figure>
+                <figcaption>Tableau de résultats de la requête</figcaption>
+                <img src="/assert/img/m3/requ_moins25_remise.png" alt="Tableau de résultats de la requête">
+            </figure>
         </article>
         <div class="separateur_vertical_solid"></div>
-        <aside>
-            <p>INTERPRETATION</p>
-            <p>Voici le code généré par cette requête.<br><code>CODECODECODESQLSQLSQL
+        <aside class="mission">
+            <p>Nous avons effectué une double jointure a droite sur les tables de commande et de détails des commandes
+                de depuis la table clients, pour y soustraire tous les clients ayant déjà eu des remises de 25%.</p>
+            <p>Voici le code généré par cette requête.<br><code>
+                SELECT DISTINCT cl.SocieteCli, cl.Contactcli, cl.AdresseCli, cl.VilleCli
+                FROM (Client AS cl
+                LEFT JOIN Commande AS co
+                ON cl.CodeCli = co.CodeCli)
+                LEFT JOIN DetailCommande AS dc
+                ON co.NoCom = dc.NoCom
+                WHERE cl.CodeCli NOT IN (
+                SELECT co.CodeCli
+                FROM Commande AS co
+                INNER JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom
+                WHERE dc.Remise = 0.25
+                )
+                AND dc.Remise < 0.25;
             </code></p>
         </aside>
     </div>
     <div class="flexible_row">
-        <article>
-            <h3 class="question">v2</h3>
-            <p>resultat screen ou tableau</p>
+        <article class="mission">
+            <p>Nous avons fait une erreur dans la missions 3 en lisant trop vite la question. Voici la question à
+                laquelle nous avons repondu : </p>
+            <h3 class="question">Quels clients n’ont eu que des remises de 10% ou 20% ou pas de remise ?</h3>
+            <p>Nous avons cherché les clients n’ayant eu que des remises de sois 10% , sois 20%, sois aucune remise sur
+                leur commandes.</p>
+            <table class="resultat_sql">
+                <caption>Tableau résultat de la requête</caption>
+                <thead>
+                <th>SocieteCli</th>
+                <th>Contactcli</th>
+                <th>AdresseCli</th>
+                <th>VilleCli</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Le marikou</td>
+                    <td>Maël Sporto</td>
+                    <td>3 Rue Sainte-Catherine</td>
+                    <td>Nancy</td>
+                </tr>
+                <tr>
+                    <td>Les Morainières</td>
+                    <td>Julie Kas</td>
+                    <td>22 Rue des Bouchers</td>
+                    <td>Bayeux</td>
+                </tr>
+                </tbody>
+            </table>
         </article>
         <div class="separateur_vertical_solid"></div>
-        <aside>
-            <p>INTERPRETATION</p>
-            <p>Voici le code généré par cette requête.<br><code>CODECODECODESQLSQLSQL
+        <aside class="mission">
+            <p>Nous avons construit la requête de sorte que nous soustrayons les clients ayant des remises ne
+                correspondant pas a 10%, 20% ou aucune remise. Nous affichons le nom de la société du client, leurs
+                contacts, adresses et villes.</p>
+            <p>Voici le code généré par cette requête.<br><code>
+                SELECT DISTINCT cl.SocieteCli, cl.Contactcli, cl.AdresseCli, cl.VilleCli
+                FROM (Client AS cl
+                LEFT JOIN Commande AS co ON cl.CodeCli = co.CodeCli)
+                LEFT JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom
+                WHERE cl.CodeCli NOT IN (
+                SELECT co.CodeCli
+                FROM Commande AS co
+                INNER JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom
+                WHERE dc.Remise > 0.01 AND dc.Remise < 0.09)
+                AND cl.CodeCli NOT IN (
+                SELECT co.CodeCli
+                FROM Commande AS co
+                INNER JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom
+                WHERE dc.Remise > 0.11 AND dc.Remise < 0.19)
+                AND cl.CodeCli NOT IN (
+                SELECT co.CodeCli
+                FROM Commande AS co
+                INNER JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom
+                WHERE dc.Remise > 0.21);
             </code></p>
         </aside>
     </div>
@@ -175,8 +416,10 @@
     <div class="flexible_row">
         <article class="mission">
             <h3 class="question">Objectif de l'indicateur:</h3>
-            <p>Je cherche, avec une commande sur la base de données de Kdou, le nombre de commande passée et le chiffre
-                d’affaires de chaque catégorie pour avoir une idée de leur rentabilité et de leur efficacité, trier du
+            <p>Je cherche, avec une commande sur la base de données de Kdou, le nombre de commande passée et le
+                chiffre
+                d’affaires de chaque catégorie pour avoir une idée de leur rentabilité et de leur efficacité, trier
+                du
                 nombre de commande le plus élever au nombre de commande le plus faible.
                 Kdou peux alors se rendre compte de sa rentabilité entre le nombre de produits vendu et le chiffre
                 d’affaires global lier a la catégorie et alors adapter sa production en conséquences dans l’optique
@@ -191,6 +434,7 @@
                 <th>chiffre_daffaire</th>
                 <th>NombreDeCommande</th>
                 </thead>
+                <tbody>
                 <tr>
                     <th>Boissons</th>
                     <td>1,889.41€</td>
@@ -231,47 +475,51 @@
                     <td>134.88€</td>
                     <td>166</td>
                 </tr>
+                </tbody>
             </table>
         </article>
         <div class="separateur_vertical_solid"></div>
-        <aside>
+        <aside class="mission">
             <p>Création de la requête :</p>
-            <p>La table crée avec cette première requête permet de voir le nombre d’article vendu par categorie :</p>
-            <code>SELECT ca.CodeCateg,
-                COUNT(co.NoCom) AS Nombre_commande
-                FROM Commande AS co
-                INNER JOIN ((Categorie AS ca
-                RIGHT JOIN Produit AS p
-                ON ca.CodeCateg = p.CodeCateg)
-                INNER JOIN DetailCommande AS dc
-                ON p.RefProd = dc.RefProd)
-                ON co.NoCom = dc.NoCom
-                GROUP BY ca.CodeCateg
-                ORDER BY Count(co.NoCom) DESC;
+            <p>La table crée avec cette première requête permet de voir le nombre d’article vendu par categorie
+                :</p>
+            <pre>
+            <code class="bigger_code">
+SELECT ca.CodeCateg,
+COUNT(co.NoCom) AS Nombre_commande
+FROM Commande AS co
+INNER JOIN ((Categorie AS ca
+        RIGHT JOIN Produit AS p ON ca.CodeCateg = p.CodeCateg)
+    INNER JOIN DetailCommande AS dc ON p.RefProd = dc.RefProd)
+ON co.NoCom = dc.NoCom
+GROUP BY ca.CodeCateg
+ORDER BY Count(co.NoCom) DESC;
             </code>
+                </pre>
             <br>
-            <p>La table crée avec cette seconde requête permet de voir le chiffre d’affaires de chaque catégorie :</p>
-            <code>SELECT c.CodeCateg,
-                SUM(p.PrixUnit) AS Chiffre_daffaire
-                FROM Categorie AS c
-                INNER JOIN produit AS p
-                ON c.CodeCateg = p.CodeCateg
-                GROUP BY c.CodeCateg;
+            <p>La table crée avec cette seconde requête permet de voir le chiffre d’affaires de chaque catégorie
+                :</p>
+            <pre>
+            <code class="bigger_code">
+SELECT c.CodeCateg,
+SUM(p.PrixUnit) AS Chiffre_daffaire
+FROM Categorie AS c
+INNER JOIN produit AS p ON c.CodeCateg = p.CodeCateg
+GROUP BY c.CodeCateg;
             </code>
+                </pre>
             <br>
             <p>Cette dernière requête permet de regrouper les résultats des deux en une même table :</p>
-            <code>SELECT c.NomCateg,
-                [R2].chiffre_daffaire,
-                [R1].NombreDeCommande
-                FROM R2
-                INNER JOIN(R1
-                INNER JOIN Categorie AS c
-                ON [R1].CodeCateg=c.CodeCateg)
-                ON [R2].CodeCateg=c.CodeCateg;
+            <pre>
+                <code class="bigger_code">
+SELECT c.NomCateg, [R2].chiffre_daffaire, [R1].NombreDeCommande
+FROM R2
+INNER JOIN(R1
+    INNER JOIN Categorie AS c ON [R1].CodeCateg=c.CodeCateg)
+ON [R2].CodeCateg=c.CodeCateg;
             </code>
+                </pre>
             <br>
-
-
         </aside>
     </div>
 </section>
@@ -279,15 +527,29 @@
 <section class="section_mission_p5" id="Yanis">
     <h2>Yanis</h2>
     <div class="flexible_row">
-        <article>
-            <h3 class="question">v1</h3>
-            <p>resultat screen ou tableau</p>
+        <article class="mission">
+            <h3 class="question">Objectif de l'indicateur:</h3>
+            <p>L’intérêt de cette requête est de calculer le chiffre d’affaires généré par chaque produit en tenant
+                compte des prix unitaires, des remises et des quantités vendues. Cela permet d’analyser la performance
+                des produits et d’identifier celui qui est le plus rentable pour l’entreprise.</p>
+            <figure>
+                <figcaption>Extrait du tableau de résultats de la requête</figcaption>
+                <img src="/assert/img/m3/extr_requ_yanis.png    " alt="Extrait du tableau de résultats de la requête">
+            </figure>
         </article>
         <div class="separateur_vertical_solid"></div>
-        <aside>
-            <p>INTERPRETATION</p>
-            <p>Voici le code généré par cette requête.<br><code>CODECODECODESQLSQLSQL
-            </code></p>
+        <aside class="mission">
+            <p>Création de la requête :</p>
+            <pre>
+            <code class="bigger_code">
+SELECT P.NomProd,
+SUM(DC.QteCom*DC.PrixUnitCli*(1-DC.Remise)) AS TotalRecette
+FROM Produit AS P
+INNER JOIN DetailCommande AS DC ON P.RefProd = DC.RefProd
+GROUP BY P.NomProd
+ORDER BY Sum(DC.QteCom*DC.PrixUnitCli*(1-DC.Remise)) DESC;
+            </code>
+            </pre>
         </aside>
     </div>
 </section>
@@ -297,11 +559,14 @@
     <div class="flexible_row">
         <article class="mission">
             <h3 class="question">Objectif de l'indicateur:</h3>
-            <p>Cette requête donne Contact des clients Ayant déjà acheter des poisson et fruit de mer . J'ai cherché à
-                lié le tableau client , commande et catégorie pour avoir tous les client qui ont déjà commandée dans la
+            <p>Cette requête donne Contact des clients Ayant déjà acheter des poisson et fruit de mer . J'ai cherché
+                à
+                lié le tableau client , commande et catégorie pour avoir tous les client qui ont déjà commandée dans
+                la
                 catégorie poisson et fruit de mer et donner le plus d’information pour pouvoir les contacter
                 On peut utiliser cette requête pour contacter les clients, qui pourrais potentiellement intéresser
-                d’acheter les produits importés d'Asie/japon, le japon ayant une grande consommation en fruit de mer,
+                d’acheter les produits importés d'Asie/japon, le japon ayant une grande consommation en fruit de
+                mer,
                 les produit que l’on cherche à commercialiser pourrais les intéresser.</p>
             <table class="resultat_sql">
                 <caption>Extrait du tableau de résultats de la requête</caption>
@@ -311,6 +576,7 @@
                 <th>ContactCli</th>
                 <th>Téléphone</th>
                 </thead>
+                <tbody>
                 <tr>
                     <td>ALYAD</td>
                     <td>Chez Bouxou</td>
@@ -353,11 +619,11 @@
                     <td>Pedro Afonso</td>
                     <td>06.40.67.88.88</td>
                 </tr>
-
+                </tbody>
             </table>
         </article>
         <div class="separateur_vertical_solid"></div>
-        <aside>
+        <aside class="mission">
             <p>Création de la requête :</p>
             <p>Ici, je sélectionne des informations uniques sur les clients avec SELECT DISTINCT pour éviter les
                 doublons. Je commence par le tableau Client, qui contient toutes les informations nécessaires. <br>Ensuite,
@@ -366,22 +632,29 @@
                 <li>Avec Commande pour relier les clients à leurs commandes via CodeCli.</li>
                 <li>Avec DetailCommande pour obtenir les détails de ces commandes, en utilisant NoCom.</li>
                 <li>Avec Produit pour récupérer les informations sur les produits en utilisant RefProd.</li>
-                <li>Avec Categorie pour accéder à la catégorie de chaque produit en reliant les colonnes CodeCateg.</li>
+                <li>Avec Categorie pour accéder à la catégorie de chaque produit en reliant les colonnes
+                    CodeCateg.
+                </li>
             </ul>
             <p>
-            Enfin, je filtre les résultats pour ne conserver que les lignes où le nom de la catégorie est "Poissons et
-            fruits de mer", ce qui me permet d'obtenir uniquement les clients ayant commandé des produits de cette
-            catégorie.
+                Enfin, je filtre les résultats pour ne conserver que les lignes où le nom de la catégorie est
+                "Poissons et
+                fruits de mer", ce qui me permet d'obtenir uniquement les clients ayant commandé des produits de
+                cette
+                catégorie.
             </p>
-            <code>SELECT DISTINCT Client.CodeCli, Client.SocieteCli, Client.ContactCli, Client.Téléphone
-                FROM Client
-                INNER JOIN Commande ON Client.CodeCli = Commande.CodeCli
-                INNER JOIN DetailCommande ON Commande.NoCom = DetailCommande.NoCom
+            <pre>
+            <code class="bigger_code">
+SELECT DISTINCT Client.CodeCli, Client.SocieteCli, Client.ContactCli,
+Client.Téléphone
+FROM Client
+    INNER JOIN Commande ON Client.CodeCli = Commande.CodeCli
+        INNER JOIN DetailCommande ON Commande.NoCom = DetailCommande.NoCom
                 INNER JOIN Produit ON DetailCommande.RefProd = Produit.RefProd
-                INNER JOIN Categorie ON Produit.CodeCateg = Categorie.CodeCateg
-                WHERE Categorie.NomCateg = "Poissons et fruits de mer";
-
+                    INNER JOIN Categorie ON Produit.CodeCateg = Categorie.CodeCateg
+WHERE Categorie.NomCateg = "Poissons et fruits de mer";
             </code>
+                </pre>
         </aside>
     </div>
 </section>
@@ -389,18 +662,33 @@
 <section class="section_mission_p5" id="Dat">
     <h2>Dat</h2>
     <div class="flexible_row">
-        <article>
-            <h3 class="question">v1</h3>
-            <p>resultat screen ou tableau</p>
+        <article class="mission">
+            <h3 class="question">Objectif de l'indicateur:</h3>
+            <p>Je cherche les desserts et les boissons qui ont un prix de plus de 50 euros provenant des différents
+                pays. Cela a pour but de bien choisir la provenance des produits en fonction de leur prix. Par exemple
+                les États-Unis sont connus pour les produits toxiques et OGM. Ici cela a pour but de protéger
+                l’environnent et de protéger nos clients. De plus, la variété des prix peut notamment fait l’impact sur
+                la fiabilité du produit importer.</p>
+            <figure>
+                <figcaption>Tableau résultat de la requête</figcaption>
+                <img src="/assert/img/m3/requ_dat.png" alt="Extrait du tableau de résultats de la requête">
+            </figure>
         </article>
         <div class="separateur_vertical_solid"></div>
-        <aside>
-            <p>INTERPRETATION</p>
-            <p>Voici le code généré par cette requête.<br><code>CODECODECODESQLSQLSQL
-            </code></p>
+        <aside class="mission">
+            <p>Création de la requête :</p>
+            <pre>
+            <code class="bigger_code">
+SELECT p.NomProd, p.PrixUnit, f.Pays
+FROM Fournisseur AS f
+INNER JOIN (Categorie AS c
+    INNER JOIN Produit AS p ON c.CodeCateg = p.CodeCateg)
+ON f.NoFour = p.NoFour
+WHERE (((p.prixUnit)>=50) AND ((c.NomCateg)='Desserts' OR (c.NomCateg)='Boissons'));
+            </code>
+            </pre>
         </aside>
     </div>
-    >
 </section>
 
 <footer>

@@ -52,6 +52,7 @@ header h1{
     border: black solid 1px;
     border-radius: 8px;
     box-shadow: -1px -2px black;
+    font-family: 'Arial Black', sans-serif;
 }
 
 .nav {
@@ -198,6 +199,10 @@ code {
     font-size: 80%;
 }
 
+.bigger_code {
+    font-size: 110%;
+}
+
 .separateur_horizontal_solid {
     border: none;
     height: 1px;
@@ -290,9 +295,6 @@ img{
 }
 
 
-/* Style pour la mission 1 */
-
-/* Style pour la mission 2 */
 
 .mission {
     display: flex;

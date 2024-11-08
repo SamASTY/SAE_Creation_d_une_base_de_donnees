@@ -50,8 +50,9 @@ header h1 {
     left: 50%;
     transform: translate(-50%);
     border: black solid 1px;
-    border-radius: 8px;
+    border-radius: 20px;
     box-shadow: -1px -2px black;
+    font-family: 'Arial Black', sans-serif;
 }
 
 .nav {
@@ -151,6 +152,7 @@ nav ul li a {
     font-size: 15px;
 }
 
+
 /* Style pour les 3 missions */
 .section_mission_p1 {
     grid-column: 1 / 4;
@@ -179,6 +181,7 @@ nav ul li a {
 
 .section_mission_p1, .section_mission_p2, .section_mission_p3,
 .section_mission_p4, .section_mission_p5 {
+    grid-column: 1 / 4;
     margin-top: 7em;
     margin-left: 2em;
     padding-right: 2em;
@@ -290,7 +293,6 @@ h2.titre {
     font-weight: bold;
 }
 
-
 .list_fleche ul {
     list-style-type: none;
 }
@@ -310,11 +312,6 @@ img {
     width: 40vw;
     height: auto;
 }
-
-
-/* Style pour la mission 1 */
-
-/* Style pour la mission 2 */
 
 .mission {
     display: flex;
@@ -348,6 +345,10 @@ img {
 
 .bouttonmission3:hover {
     border: 1px solid #ccc;
+}
+
+.bigger_code {
+    font-size: 110%;
 }
 
 
