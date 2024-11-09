@@ -199,6 +199,18 @@ code {
     font-size: 80%;
 }
 
+.gras {
+    font-weight: bold;
+}
+
+.liste_square_inside li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    list-style-type: square;
+    list-style-position: inside ;
+}
+
+
 .bigger_code {
     font-size: 110%;
 }
@@ -358,6 +370,17 @@ img{
 /* Style pour la conclusion BDD */
 
 /* Style pour la conclusion du web */
+
+#section_conclusion {
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: 7em;
+    margin-left: 2em;
+    padding-right: 2em;
+    font-size: 20px;
+}
+
+
 
 
 /* Style du footer */
