@@ -27,24 +27,22 @@
     </nav>
 </header>
 <section class="section_mission_p1">
-    <h1 class="titre">Context de la mission</h1>
-    <article>
-        <p>Dans cette mission, nous avions comme objectif de commencer à exploiter la même base de données qu’à la
-            mission 1, la base de données de l’entreprises Kdou. Cependant ici nous devions utiliser le logiciel Low
-            Code Acces pour analyser la base et obtenir des indicateurs intéressants à l’aide du mode de création
-            graphique QBE (Query By Example),ayant une première introduction au SQL. La base de données est composée
-            de
-            6 relations : <b>Fournisseur</b>, <b>Produit</b>
-            , <b>Categorie</b>, <b>Clientele</b>, <b>Commande</b>, <b>DetailCommande</b>.</p>
-    </article>
+    <h2 class="titre">Context de la mission</h2>
+    <p>Dans cette mission, nous avions comme objectif de commencer à exploiter la même base de données qu’à la
+        mission 1, la base de données de l’entreprises Kdou. Cependant ici nous devions utiliser le logiciel Low
+        Code Acces pour analyser la base et obtenir des indicateurs intéressants à l’aide du mode de création
+        graphique QBE (Query By Example),ayant une première introduction au SQL. La base de données est composée
+        de
+        6 relations : <b>Fournisseur</b>, <b>Produit</b>
+        , <b>Categorie</b>, <b>Clientele</b>, <b>Commande</b>, <b>DetailCommande</b>.</p>
 </section>
 
 <section class="section_mission_p2">
-    <h1 class="titre">Indicateur intéressant relever dans la base</h1>
-    <h2 class="titre">Produit Allemand et Italiens inférieurs à 50€</h2>
+    <h2 class="titre">Indicateur intéressant relever dans la base</h2>
+    <h3 class="titre">Produit Allemand et Italiens inférieurs à 50€</h3>
     <div class="flexible_row">
         <article>
-            <h3 class="question">Quels sont les produits d’Italie ou d’Allemagne vendus 50€ ou moins ?</h3>
+            <h4 class="question">Quels sont les produits d’Italie ou d’Allemagne vendus 50€ ou moins ?</h4>
             <figure>
                 <figcaption>Tableau de résultats de la requête</figcaption>
                 <img src="/assert/img/m2/prod_all_it_inf_50.png" alt="Tableau de résultats de la requête">
@@ -73,16 +71,18 @@
 </section>
 
 <section class="section_mission_p3">
-    <h2 class="titre">Produits de type viandes sur Paris</h2>
+    <h3 class="titre">Produits de type viandes sur Paris</h3>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">Quelles les produits de type viande livrés à Paris ? </h3>
+            <h4 class="question">Quelles les produits de type viande livrés à Paris ? </h4>
             <table class="resultat_sql">
                 <caption>Tableau résultat de la requête</caption>
                 <thead>
-                <th>NomProd</th>
-                <th>NomCateg</th>
-                <th>VilleCli</th>
+                <tr>
+                    <th>NomProd</th>
+                    <th>NomCateg</th>
+                    <th>VilleCli</th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr>
@@ -142,10 +142,10 @@
 </section>
 
 <section class="section_mission_p4">
-    <h2 class="titre">Commande du client PAVBO</h2>
+    <h3 class="titre">Commande du client PAVBO</h3>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">Quels produits (nom, catégorie et prix) a commandé le client Mikal Pavbo ?</h3>
+            <h4 class="question">Quels produits (nom, catégorie et prix) a commandé le client Mikal Pavbo ?</h4>
             <figure>
                 <figcaption>Extrait du tableau de résultats de la requête</figcaption>
                 <img src="/assert/img/m2/commande_pavbo.png" alt="Extrait du tableau de résultats de la requête">
@@ -174,17 +174,19 @@
 </section>
 
 <section class="section_mission_p5">
-    <h2 class="titre">Prix moyen, maximum et minimum des produits</h2>
+    <h3 class="titre">Prix moyen, maximum et minimum des produits</h3>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">Donner le prix moyen de vente des produits, le prix minimum et le prix
-                maximum. </h3>
+            <h4 class="question">Donner le prix moyen de vente des produits, le prix minimum et le prix
+                maximum. </h4>
             <table class="resultat_sql">
                 <caption>Tableau résultat de la requête</caption>
                 <thead>
-                <th>MoyenneDePrixUnit</th>
-                <th>MinDePrixUnit</th>
-                <th>MaxDePrixUnit</th>
+                <tr>
+                    <th>MoyenneDePrixUnit</th>
+                    <th>MinDePrixUnit</th>
+                    <th>MaxDePrixUnit</th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr>

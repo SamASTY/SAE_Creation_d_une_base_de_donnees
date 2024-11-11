@@ -29,6 +29,7 @@ header {
     height: 7em;
     position: fixed;
 }
+
 /* Style de la navigation*/
 #menuToggle {
     display: none; /* Cacher le checkbox */
@@ -157,7 +158,7 @@ nav ul li a {
 }
 
 
-/* Style pour les 3 missions */
+/* Style pour les pages */
 .section_mission_p1 {
     grid-column: 1 / 4;
     grid-row: 2;
@@ -205,9 +206,12 @@ p {
     padding-top: 10px;
     padding-bottom: 10px;
     list-style-type: square;
-    list-style-position: inside ;
+    list-style-position: inside;
 }
 
+li.sans_decoration{
+    list-style-type:none;
+}
 
 .separateur_horizontal_solid {
     border: none;
@@ -242,13 +246,39 @@ p {
     border-collapse: collapse;
 }
 
+.resultat_sql th, .resultat_sql td {
+    padding: 0.5em;
+}
+
+
 .resultat_sql td{
     text-align: right;
 }
 
-.resultat_sql caption {
+.resultat_sql caption , .information_textuelle caption{
     font-weight: bold;
+    padding-bottom: 1em;
 }
+
+.information_textuelle {
+    border: 2px dashed black;
+    border-collapse: collapse;
+}
+
+.information_textuelle td, .information_textuelle th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.information_textuelle th{
+    font-variant: small-caps;
+}
+
+.information_textuelle td, .information_textuelle th{
+    text-align:center;
+    padding: 0.5em;
+}
+
 
 .flexible_row {
     display: flex;
@@ -269,11 +299,25 @@ p {
     align-items: start;
 }
 
-h1.titre {
+h2.titre {
     font-weight: bold;
     font-size: 2em;
     font-variant: small-caps;
 }
+
+h3.titre {
+    font-weight: bold;
+    font-size: 1.5em;
+    font-variant: small-caps;
+    margin-left: 3em;
+}
+
+h4.titre {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 3em;
+}
+
 
 .titre {
     font-family: Courrier, sans-serif;
@@ -283,13 +327,6 @@ h1.titre {
     width: 100%;
     max-width: 40em;
 
-}
-
-h2.titre {
-    font-weight: bold;
-    font-size: 1.5em;
-    font-variant: small-caps;
-    margin-left: 3em;
 }
 
 .question {
@@ -314,7 +351,7 @@ h2.titre {
 
 .list_fleche li {
     padding-top: 1.5em;
-
+    list-style-type: none;
 }
 
 .list_fleche li::before {
@@ -406,7 +443,6 @@ code {
 }
 
 
-
 /* Style pour la conclusion du web */
 
 #section_conclusion_web1 {
@@ -433,6 +469,12 @@ footer {
     grid-row: 7;
     background-color: #0c4732;
     width: 100%;
+}
+
+footer h5 {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0 auto;
 }
 
 footer li {

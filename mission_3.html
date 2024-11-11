@@ -26,22 +26,20 @@
     </nav>
 </header>
 <section class="section_mission_p1">
-    <h1 class="titre">Context de la mission</h1>
-    <article>
-        <p>Dans cette mission notre but est d’analyser les achats de notre client sur les produits pertinent tous en
-            exploitant les données de ses produits et que le prix et les fournisseurs. Dans chaque cas nous avons un
-            /
-            des critère(s) de recherche pour étudier un public précis. Nous avons accès à la base de données de Kdou
-            que
-            nous avons bien prise en mains, et nous devons effectuer nos recherches à l’aide du langage SQL. Nous
-            travaillons sur la base de données, cette dernière composée de de
-            6 relations : <b>Fournisseur</b>, <b>Produit</b>
-            , <b>Categorie</b>, <b>Clientele</b>, <b>Commande</b>, <b>DetailCommande</b>.</p>
-    </article>
+    <h2 class="titre">Context de la mission</h2>
+    <p>Dans cette mission notre but est d’analyser les achats de notre client sur les produits pertinent tous en
+        exploitant les données de ses produits et que le prix et les fournisseurs. Dans chaque cas nous avons un
+        /
+        des critère(s) de recherche pour étudier un public précis. Nous avons accès à la base de données de Kdou
+        que
+        nous avons bien prise en mains, et nous devons effectuer nos recherches à l’aide du langage SQL. Nous
+        travaillons sur la base de données, cette dernière composée de de
+        6 relations : <b>Fournisseur</b>, <b>Produit</b>
+        , <b>Categorie</b>, <b>Clientele</b>, <b>Commande</b>, <b>DetailCommande</b>.</p>
 </section>
 
 <section class="section_mission_p2">
-    <h1 class="titre">Indicateurs intéressant sur des thèmes spécifiques</h1>
+    <h2 class="titre">Indicateurs intéressant sur des thèmes spécifiques</h2>
     <div class="nav_mission3">
         <a href="#dessertboissons" class="bouttonmission3">Desserts / Boissons</a>
         <a href="#offrekdou" class="bouttonmission3">Offre de KDou</a>
@@ -51,10 +49,10 @@
 </section>
 
 <section class="section_mission_p3" id="dessertboissons">
-    <h2 class="titre">Desserts / Boissons</h2>
+    <h3 class="titre">Desserts / Boissons</h3>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">Combien y a-t-il des produits correspondants vendus 50€ ou plus ? </h3>
+            <h4 class="question">Combien y a-t-il des produits correspondants vendus 50€ ou plus ? </h4>
             <p> Cette requête affiche les produits de catégorie Desserts ou Boissons ayant un prix unitaire supérieure à
                 50€, et elle affiche le nom de produits avec leur prix et leur pays d’origine.</p>
             <figure>
@@ -82,14 +80,16 @@
     </div>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">On veut le chiffre d’affaire généré par catégorie desserts ou catégorie. </h3>
+            <h4 class="question">On veut le chiffre d’affaire généré par catégorie desserts ou catégorie. </h4>
             <p>Cette requête affiche le chiffre d’affaires générale par les produits de catégorie boissons et ceux de
                 catégorie dessert séparément.</p>
             <table class="resultat_sql">
                 <caption>Tableau résultat de la requête</caption>
                 <thead>
-                <th>NomCateg</th>
-                <th>Chiffre_daffaire</th>
+                <tr>
+                    <th>NomCateg</th>
+                    <th>Chiffre_daffaire</th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr>
@@ -121,11 +121,11 @@
 </section>
 
 <section class="section_mission_p3" id="offrekdou">
-    <h2 class="titre">Offre de KDou</h2>
+    <h3 class="titre">Offre de KDou</h3>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">Donner des informations sur les fournisseurs qui proposent des produits qui ne sont pas
-                commandés actuellement ?</h3>
+            <h4 class="question">Donner des informations sur les fournisseurs qui proposent des produits qui ne sont pas
+                commandés actuellement ?</h4>
             <p>Nous avons affiché le nom du fournisseur, le nom du contact et sa fonction dans la société fournisseur et
                 enfin l’adresses avec son pays du fournisseur, pour la société ayant un ou des produits n’ayant pas été
                 commander dans la base.</p>
@@ -153,14 +153,16 @@
     </div>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">Combien y –a-t-il de produits non commandés par catégorie ? </h3>
+            <h4 class="question">Combien y –a-t-il de produits non commandés par catégorie ? </h4>
             <p>Nous avons cherché la somme des produits n’ayant pas été commander par catégories dans la base de
                 données.</p>
             <table class="resultat_sql">
                 <caption>Tableau résultat de la requête</caption>
                 <thead>
-                <th>NomCateg</th>
-                <th>Non_commandee</th>
+                <tr>
+                    <th>NomCateg</th>
+                    <th>Non_commandee</th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr>
@@ -205,10 +207,10 @@
 </section>
 
 <section class="section_mission_p3" id="provenanceproduits">
-    <h2 class="titre">Provenance des produits</h2>
+    <h3 class="titre">Provenance des produits</h3>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">Quels fournisseurs vendent uniquement des boissons ou des desserts ?</h3>
+            <h4 class="question">Quels fournisseurs vendent uniquement des boissons ou des desserts ?</h4>
             <p>Nous avons cherché les fournisseurs ne vendant soit des desserts soit des boissons uniquement.</p>
             <figure>
                 <figcaption>Tableau de résultats de la requête</figcaption>
@@ -249,13 +251,15 @@
     </div>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">Quels sont les fournisseurs qui vendent les deux produits boissons et desserts ?</h3>
+            <h4 class="question">Quels sont les fournisseurs qui vendent les deux produits boissons et desserts ?</h4>
             <p>Nous avons fait une requête affichant les fournisseurs vendant que des boissons et que des desserts, mais
                 pas uniquement l’un ou l’autre.</p>
             <table class="resultat_sql">
                 <caption>Tableau résultat de la requête</caption>
                 <thead>
-                <th>Societe</th>
+                <tr>
+                    <th>Societe</th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr>
@@ -294,11 +298,11 @@
 </section>
 
 <section class="section_mission_p3" id="clientele">
-    <h2 class="titre">Clientèle / Remises</h2>
+    <h3 class="titre">Clientèle / Remises</h3>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">Certains clients n’ont jamais eu la remise la plus importante de 25%. Qui sont-ils
-                ?</h3>
+            <h4 class="question">Certains clients n’ont jamais eu la remise la plus importante de 25%. Qui sont-ils
+                ?</h4>
             <p>Nous avons cherché les clients n’ayant jamais bénéficier de la remise la plus haute sois de 25%.</p>
             <figure>
                 <figcaption>Tableau de résultats de la requête</figcaption>
@@ -329,16 +333,18 @@
         <article class="mission">
             <p>Nous avons fait une erreur dans la missions 3 en lisant trop vite la question. Voici la question à
                 laquelle nous avons repondu : </p>
-            <h3 class="question">Quels clients n’ont eu que des remises de 10% ou 20% ou pas de remise ?</h3>
+            <h4 class="question">Quels clients n’ont eu que des remises de 10% ou 20% ou pas de remise ?</h4>
             <p>Nous avons cherché les clients n’ayant eu que des remises de sois 10% , sois 20%, sois aucune remise sur
                 leur commandes.</p>
             <table class="resultat_sql">
                 <caption>Tableau résultat de la requête</caption>
                 <thead>
-                <th>SocieteCli</th>
-                <th>Contactcli</th>
-                <th>AdresseCli</th>
-                <th>VilleCli</th>
+                <tr>
+                    <th>SocieteCli</th>
+                    <th>Contactcli</th>
+                    <th>AdresseCli</th>
+                    <th>VilleCli</th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr>
@@ -389,7 +395,7 @@
 </section>
 
 <section class="section_mission_p4">
-    <h1 class="titre">Indicateurs créés par les membres de l'équipe</h1>
+    <h2 class="titre">Indicateurs créés par les membres de l'équipe</h2>
     <div class="nav_mission3">
         <a href="#Sam" class="bouttonmission3">Sam</a>
         <a href="#Yanis" class="bouttonmission3">Yanis</a>
@@ -399,10 +405,10 @@
 </section>
 
 <section class="section_mission_p5" id="Sam">
-    <h2 class="titre">Sam</h2>
+    <h3 class="titre">Sam</h3>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">Objectif de l'indicateur:</h3>
+            <h4 class="question">Objectif de l'indicateur:</h4>
             <p>Je cherche, avec une commande sur la base de données de Kdou, le nombre de commande passée et le
                 chiffre
                 d’affaires de chaque catégorie pour avoir une idée de leur rentabilité et de leur efficacité, trier
@@ -417,9 +423,11 @@
             <table class="resultat_sql">
                 <caption>Tableau résultat de la requête</caption>
                 <thead>
-                <th>NomCateg</th>
-                <th>chiffre_daffaire</th>
-                <th>NombreDeCommande</th>
+                <tr>
+                    <th>NomCateg</th>
+                    <th>chiffre_daffaire</th>
+                    <th>NombreDeCommande</th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr>
@@ -504,10 +512,10 @@
 </section>
 
 <section class="section_mission_p5" id="Yanis">
-    <h2 class="titre">Yanis</h2>
+    <h3 class="titre">Yanis</h3>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">Objectif de l'indicateur:</h3>
+            <h4 class="question">Objectif de l'indicateur:</h4>
             <p>L’intérêt de cette requête est de calculer le chiffre d’affaires généré par chaque produit en tenant
                 compte des prix unitaires, des remises et des quantités vendues. Cela permet d’analyser la performance
                 des produits et d’identifier celui qui est le plus rentable pour l’entreprise.</p>
@@ -531,10 +539,10 @@
 </section>
 
 <section class="section_mission_p5" id="Mathieu">
-    <h2 class="titre">Mathieu</h2>
+    <h3 class="titre">Mathieu</h3>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">Objectif de l'indicateur:</h3>
+            <h4 class="question">Objectif de l'indicateur:</h4>
             <p>Cette requête donne Contact des clients Ayant déjà acheter des poisson et fruit de mer . J'ai cherché
                 à
                 lié le tableau client , commande et catégorie pour avoir tous les client qui ont déjà commandée dans
@@ -547,10 +555,12 @@
             <table class="resultat_sql">
                 <caption>Extrait du tableau de résultats de la requête</caption>
                 <thead>
-                <th>CodeCli</th>
-                <th>SocieteCli</th>
-                <th>ContactCli</th>
-                <th>Téléphone</th>
+                <tr>
+                    <th>CodeCli</th>
+                    <th>SocieteCli</th>
+                    <th>ContactCli</th>
+                    <th>Téléphone</th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr>
@@ -633,10 +643,10 @@
 </section>
 
 <section class="section_mission_p5" id="Dat">
-    <h2 class="titre">Dat</h2>
+    <h3 class="titre">Dat</h3>
     <div class="flexible_row">
         <article class="mission">
-            <h3 class="question">Objectif de l'indicateur:</h3>
+            <h4 class="question">Objectif de l'indicateur:</h4>
             <p>Je cherche les desserts et les boissons qui ont un prix de plus de 50 euros provenant des différents
                 pays. Cela a pour but de bien choisir la provenance des produits en fonction de leur prix. Par exemple
                 les États-Unis sont connus pour les produits toxiques et OGM. Ici cela a pour but de protéger
@@ -665,7 +675,7 @@
 <footer>
     <ul class="footer">
         <li>
-            <h1>Membres de l'équipe</h1>
+            <h5>Membres de l'équipe</h5>
             <ul>
                 <li>Sam</li>
                 <li>Yanis</li>
@@ -674,7 +684,7 @@
             </ul>
         </li>
         <li id="navig">
-            <h1>Navigation</h1>
+            <h5>Navigation</h5>
             <ul>
                 <li><a href="index.html">Présentation du projet</a></li>
                 <li><a href="mission_1.html">Mission 1</a></li>
@@ -685,7 +695,7 @@
             </ul>
         </li>
         <li>
-            <h1>Contact</h1>
+            <h5>Contact</h5>
             <dl>
                 <dt>Adresse</dt>
                 <dd>143 avenue de Versailles 75016 Paris</dd>

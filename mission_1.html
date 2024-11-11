@@ -27,74 +27,72 @@
     </nav>
 </header>
 
-<section class="section_mission_p1">  <!-- faire autant de truc qu'il faut pour le bilan -->
-    <h1 class="titre">Contexte de la mission</h1>
-    <article>
-        <p>Dans cette première mission Kdou nous a fourni un classeur Excel avec la base de données de KDou. Nous avons
-            comme première objectif de commencer à s’approprier la base pour ensuite en extraire des données. Le Excel
-            est
-            composé de 6 feuilles différentes : <b>Fournisseur</b>, <b>Produit</b>
-            , <b>Catégorie</b>, <b>Clientèle</b>, <b>Commande</b>, <b>DétailCommande</b>.</p>
-    </article>
+<section class="section_mission_p1">
+    <h2 class="titre">Contexte de la mission</h2>
+    <p>Dans cette première mission Kdou nous a fourni un classeur Excel avec la base de données de KDou. Nous avons
+        comme première objectif de commencer à s’approprier la base pour ensuite en extraire des données. Le Excel
+        est
+        composé de 6 feuilles différentes : <b>Fournisseur</b>, <b>Produit</b>
+        , <b>Catégorie</b>, <b>Clientèle</b>, <b>Commande</b>, <b>DétailCommande</b>.</p>
 </section>
 
 <section class="section_mission_p2">  <!-- faire autant de truc qu'il faut pour le bilan -->
-    <h1 class="titre">Bilan</h1>
-    <h2 class="titre">Liens entre les tables</h2>
-    <article class="flexible_center">
-        <p>Nous avons trouvé les clées primaires et secondaires des differentes tables :</p>
-        <!-- ici soit un figcaption (avec possiblement une liste) soit un alignement flex de l'article avec un tableau resutat --->
-        <!-- exemple tableau resultats il faudrai limité a 5 info par resultats en mode extraits...-->
-        <table class="resultat_sql">
-            <caption>Clées des Tables</caption>
-            <thead>
-            <tr>
-                <th>Table</th>
-                <th>Clée(s) Primaire(s)</th>
-                <th>Clée(s) Etrangère(s)</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th>Fournisseurs</th>
-                <td>N°fournisseur</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>Produits</th>
-                <td>Ref Produit</td>
-                <td>#N°fournisseur,#Code Categorie</td>
-            </tr>
-            <tr>
-                <th>Catégorie</th>
-                <td>Code Categorie</td>
-                <td></td>
+    <h2 class="titre">Bilan</h2>
+    <article>
+        <h3 class="titre">Liens entre les tables</h3>
+        <div class="flexible_center">
+            <p>Nous avons trouvé les clées primaires et secondaires des differentes tables :</p>
+            <table class="resultat_sql">
+                <caption>Clées des Tables</caption>
+                <thead>
+                <tr>
+                    <th>Table</th>
+                    <th>Clée(s) Primaire(s)</th>
+                    <th>Clée(s) Etrangère(s)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>Fournisseurs</th>
+                    <td>N°fournisseur</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Produits</th>
+                    <td>Ref Produit</td>
+                    <td>#N°fournisseur,#Code Categorie</td>
+                </tr>
+                <tr>
+                    <th>Catégorie</th>
+                    <td>Code Categorie</td>
+                    <td></td>
 
-            </tr>
-            <tr>
-                <th>Clientèle</th>
-                <td>Code Client</td>
+                </tr>
+                <tr>
+                    <th>Clientèle</th>
+                    <td>Code Client</td>
 
-                <td></td>
-            </tr>
-            <tr>
-                <th>Commande</th>
-                <td>N°Commande</td>
-                <td>#Code Client</td>
-            </tr>
-            <tr>
-                <th>DetailCommande</th>
-                <td>N°Commande, RefProduit</td>
-                <td>N°Commande, RefProduit</td>
-            </tr>
-            </tbody>
-        </table>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Commande</th>
+                    <td>N°Commande</td>
+                    <td>#Code Client</td>
+                </tr>
+                <tr>
+                    <th>DetailCommande</th>
+                    <td>N°Commande, RefProduit</td>
+                    <td>N°Commande, RefProduit</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </article>
     <hr class="separateur_horizontal_dashed">
-    <h2 class="titre">Incohérences de Données</h2>
+    <h3 class="titre">études des données de la base</h3>
     <div class="flexible_row">
         <article class="flexible_center">
-            <h3 class="question">Incohérences de Données</h3>
+            <h4 class="question">Incohérences de données</h4>
             <dl class="liste_def_espace">
                 <dt>Variations orthographiques</dt>
                 <dd>Dans la table Clientèle, le nom de ville "Paris" est enregistré avec un "P" majuscule dans certaines
@@ -114,7 +112,7 @@
         </article>
         <div class="separateur_vertical_solid"></div>
         <article class="flexible_center">
-            <h3 class="question">Formats Non Standardisés</h3>
+            <h4 class="question">Formats non standardisés</h4>
             <dl class="liste_def_espace">
                 <dt>Numéros de téléphone</dt>
                 <dd>Dans la table Fournisseurs, les numéros de téléphone apparaissent sous différents formats, certains
@@ -136,12 +134,12 @@
             </dl>
         </article>
     </div>
+    <hr class="separateur_horizontal_dashed">
 </section>
 
-<section class="section_mission_p3">  <!-- faire autant de truc qu'il faut pour les amelioration -->
-    <h1 class="titre">Perspective d'amélioration</h1>
-    <article class="list_fleche">
-        <ul>
+<section class="section_mission_p3">
+    <h2 class="titre">Perspective d'amélioration</h2>
+        <ul class="list_fleche">
             <li>Dans la table de répartition des fournisseurs par villes, il serait préférable de créer une table pour
                 les pays et une pour les villes, liées entre elles. Cela permettrait d’affecter les villes et pays aux
                 fournisseurs/clients de façon centralisée, évitant ainsi les redondances et facilitant les mises à jour.
@@ -170,16 +168,12 @@
             validations, la structure pourrait gagner en fiabilité et en cohérence, facilitant ainsi l'analyse et
             l'exploitation des informations. Ces améliorations assureront une base de données plus robuste et adaptée
             aux besoins futurs.</p>
-        <!-- ici soit un figcaption (avec possiblement une liste) soit un alignement flex de l'article avec un tableau resutat --->
-    </article>
-
 </section>
-
 
 <footer>
     <ul class="footer">
         <li>
-            <h1>Membres de l'équipe</h1>
+            <h5>Membres de l'équipe</h5>
             <ul>
                 <li>Sam</li>
                 <li>Yanis</li>
@@ -188,7 +182,7 @@
             </ul>
         </li>
         <li id="navig">
-            <h1>Navigation</h1>
+            <h5>Navigation</h5>
             <ul>
                 <li><a href="index.html">Présentation du projet</a></li>
                 <li><a href="mission_1.html">Mission 1</a></li>
@@ -199,7 +193,7 @@
             </ul>
         </li>
         <li>
-            <h1>Contact</h1>
+            <h5>Contact</h5>
             <dl>
                 <dt>Adresse</dt>
                 <dd>143 avenue de Versailles 75016 Paris</dd>
