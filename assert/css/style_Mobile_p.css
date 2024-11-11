@@ -3,6 +3,8 @@ body {
     background-color: #F3F7D4;
     margin: 0;
     width: 100%;
+    font-family: Trebuchet, sans-serif;
+
 }
 
 .grid {
@@ -37,6 +39,8 @@ header {
 header h1{
     font-size: 20px;
     justify-self: center;
+    font-family: Courrier, sans-serif;
+    font-variant: small-caps;
 }
 
 /* Style du bouton de menu */
@@ -52,7 +56,8 @@ header h1{
     border: black solid 1px;
     border-radius: 8px;
     box-shadow: -1px -2px black;
-    font-family: 'Arial Black', sans-serif;
+    font-family: Courrier, sans-serif;
+    font-weight: bold;
 }
 
 .nav {
@@ -101,6 +106,7 @@ nav ul li a {
     background-color: #2b7e64;
     max-width: 100%;
     cursor: pointer;
+    font-family: Tahoma, sans-serif;
 }
 
 .bouton_nav a {
@@ -195,10 +201,6 @@ p {
     font-size: 15px;
 }
 
-code {
-    font-size: 80%;
-}
-
 .gras {
     font-weight: bold;
 }
@@ -210,9 +212,11 @@ code {
     list-style-position: inside ;
 }
 
-
-.bigger_code {
-    font-size: 110%;
+code {
+    font-family: Courier, monospace;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 80%;
 }
 
 .separateur_horizontal_solid {
@@ -257,6 +261,10 @@ h1.titre {
     font-variant: small-caps;
 }
 
+.titre {
+    font-family: Courrier, sans-serif;
+}
+
 .flexible_center > .resultat_sql {
     width: 100%;
     max-width: 40em;
@@ -275,7 +283,7 @@ h2.titre {
     font-weight: normal;
     text-decoration: underline;
     font-variant: small-caps;
-
+    font-family: Courrier, sans-serif;
 }
 
 .liste_def_espace > dd {
@@ -301,12 +309,11 @@ h2.titre {
     color: black;
     font-size: 1.2em;
 }
+
 img{
     width: 40vw;
     height: auto;
 }
-
-
 
 .mission {
     display: flex;
@@ -393,6 +400,8 @@ footer {
 
 footer li {
     list-style-type: none;
+    font-family: Tahoma, sans-serif;
+
 }
 
 
@@ -401,6 +410,8 @@ footer p {
     color: white;
     margin-top: 20px;
     font-size: 10px;
+    font-family: Tahoma, sans-serif;
+
 }
 
 .footer {
@@ -413,9 +424,9 @@ footer p {
     margin-right: 4em;
 }
 
-footer a:hover {
+footer a:hover, #aside_index a:hover {
     padding: 5px;
-    border-radius:10px ;
+    border-radius: 10px;
     background-color: #116346;
     color: white;
 }

@@ -55,14 +55,19 @@
             <p>Nous avons cherché les produits provenant d’Italie ou d’Allemagne (ayant l’adresse du fournisseur
                 dans un
                 des deux pays) ayant un prix de vente unitaire à 50€ ou moins.</p>
-            <p>Voici le code généré par cette requête.<br><code>SELECT DISTINCT Produit.NomProd, Produit.PrixUnit,
-                Fournisseur.Contact, Fournisseur.Ville,
-                Fournisseur.Pays
-                FROM Fournisseur INNER JOIN (Produit INNER JOIN DetailCommande ON Produit.RefProd =
-                DetailCommande.RefProd) ON Fournisseur.NoFour = Produit.NoFour
-                WHERE (((Fournisseur.Pays)="Allemagne" Or (Fournisseur.Pays)="Italie"))
-                ORDER BY Produit.PrixUnit;
-            </code></p>
+            <p>Voici le code généré par cette requête.</p>
+            <br>
+            <code>
+                SELECT DISTINCT Produit.NomProd, Produit.PrixUnit, <br>
+                Fournisseur.Contact, Fournisseur.Ville, Fournisseur.Pays <br>
+                FROM Fournisseur <br>
+                INNER JOIN (Produit <br>
+                &#160;INNER JOIN DetailCommande <br>
+                &#160;ON Produit.RefProd = DetailCommande.RefProd) <br>
+                ON Fournisseur.NoFour = Produit.NoFour <br>
+                WHERE ((Fournisseur.Pays)="Allemagne" Or (Fournisseur.Pays)="Italie") <br>
+                ORDER BY Produit.PrixUnit; <br>
+            </code>
         </aside>
     </div>
 </section>
@@ -118,14 +123,19 @@
             <p>Nous avons cherché les produits de type viandes ayant été commandés par un client ayant son adresse
                 sur
                 Paris.</p>
-            <p>Voici le code généré par cette requête.<br><code>SELECT DISTINCT Produit.NomProd, Categorie.NomCateg,
-                Client.VilleCli
-                FROM Categorie INNER JOIN ((Client INNER JOIN Commande ON Client.CodeCli = Commande.CodeCli) INNER
-                JOIN
-                (Produit INNER JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd) ON Commande.NoCom =
-                DetailCommande.NoCom) ON Categorie.CodeCateg = Produit.CodeCateg
-                WHERE (((Categorie.NomCateg)="Viandes") AND ((Client.VilleCli)="Paris"));
-            </code></p>
+            <p>Voici le code généré par cette requête.</p>
+            <br>
+            <code>
+                SELECT DISTINCT Produit.NomProd, Categorie.NomCateg,Client.VilleCli<br>
+                FROM Categorie<br>
+                INNER JOIN (<br>
+                &#160;&#160;(Client INNER JOIN Commande ON Client.CodeCli = Commande.CodeCli)<br>
+                &#160;INNER JOIN (Produit<br>
+                &#160;&#160;INNER JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd)<br>
+                &#160;ON Commande.NoCom = DetailCommande.NoCom)<br>
+                ON Categorie.CodeCateg = Produit.CodeCateg<br>
+                WHERE (((Categorie.NomCateg)="Viandes") AND ((Client.VilleCli)="Paris"));<br>
+            </code>
 
         </aside>
     </div>
@@ -146,15 +156,19 @@
             <p>Nous avons cherché toutes les commandes qu’à fait le client avec le code client PAVBO, ce dernier
                 étant
                 celui du client Mikal Pavbo.</p>
-            <p>Voici le code généré par cette requête.<br><code>SELECT DISTINCT Produit.NomProd, Categorie.NomCateg,
-                Produit.PrixUnit
-                FROM Categorie INNER JOIN (Client INNER JOIN (Commande INNER JOIN (Produit INNER JOIN DetailCommande
-                ON
-                Produit.RefProd = DetailCommande.RefProd) ON Commande.NoCom = DetailCommande.NoCom) ON
-                Client.CodeCli =
-                Commande.CodeCli) ON Categorie.CodeCateg = Produit.CodeCateg
-                WHERE (((Client.CodeCli)="PAVBO"))
-            </code></p>
+            <p>Voici le code généré par cette requête.
+            </p>
+            <br>
+            <code>
+                SELECT DISTINCT Produit.NomProd, Categorie.NomCateg,Produit.PrixUnit<br>
+                FROM Categorie<br>
+                INNER JOIN (Client INNER JOIN (Commande<br>
+                &#160;INNER JOIN (Produit<br>
+                &#160;&#160;INNER JOIN DetailCommande ON Produit.RefProd = DetailCommande.RefProd)<br>
+                &#160;ON Commande.NoCom = DetailCommande.NoCom)<br>
+                ON Client.CodeCli = Commande.CodeCli) ON Categorie.CodeCateg = Produit.CodeCateg<br>
+                WHERE (((Client.CodeCli)="PAVBO"))<br>
+            </code>
         </aside>
     </div>
 </section>
@@ -185,10 +199,13 @@
         <aside class="mission">
             <p>Nous avons fait un calcul sur la base de tous les produits de la base pour avoir la moyenne de prix,
                 le maximum et le minimum.</p>
-            <p>Voici le code généré par cette requête.<br><code>SELECT Avg(Produit.PrixUnit) AS MoyenneDePrixUnit,
-                Min(Produit.PrixUnit) AS MinDePrixUnit, Max(Produit.PrixUnit) AS MaxDePrixUnit
-                FROM Produit;
-            </code></p>
+            <p>Voici le code généré par cette requête.</p>
+            <br>
+            <code>
+                SELECT Avg(Produit.PrixUnit) AS MoyenneDePrixUnit, Min(Produit.PrixUnit) AS MinDePrixUnit,
+                Max(Produit.PrixUnit) AS MaxDePrixUnit <br>
+                FROM Produit; <br>
+            </code>
         </aside>
     </div>
 </section>

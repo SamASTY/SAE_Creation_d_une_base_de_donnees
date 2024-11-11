@@ -51,7 +51,7 @@
 </section>
 
 <section class="section_mission_p3" id="dessertboissons">
-    <h2>Desserts / Boissons</h2>
+    <h2 class="titre">Desserts / Boissons</h2>
     <div class="flexible_row">
         <article class="mission">
             <h3 class="question">Combien y a-t-il des produits correspondants vendus 50€ ou plus ? </h3>
@@ -67,18 +67,17 @@
             <p> Elle est constituée d’une double jointure pour avoir accès au tables Catégorie, Produits et
                 Fournisseurs, dans laquelle elle va sélectionner après coup les produits de type Boissons et Dessert
                 avant un prix supérieure ou égal a 50€.</p>
-            <p>Voici le code généré par cette requête.<br><code>
-                SELECT p.NomProd, p.PrixUnit, f.Pays
-                FROM Fournisseur AS f
-                INNER JOIN (Categorie AS c
-                INNER JOIN Produit AS p
-                ON c.CodeCateg = p.CodeCateg)
-                ON f.NoFour = p.NoFour
-                WHERE (((p.prixUnit)>=50)
-                AND ((c.NomCateg)='Desserts'
-                OR (c.NomCateg)='Boissons'));
-
-            </code></p>
+            <p>Voici le code généré par cette requête.</p>
+            <br>
+            <code>
+                SELECT p.NomProd, p.PrixUnit, f.Pays<br>
+                FROM Fournisseur AS f<br>
+                INNER JOIN (Categorie AS c<br>
+                &#160; INNER JOIN Produit AS p ON c.CodeCateg = p.CodeCateg)<br>
+                &#160;ON f.NoFour = p.NoFour<br>
+                WHERE (((p.prixUnit)>=50)<br>
+                AND ((c.NomCateg)='Desserts' OR (c.NomCateg)='Boissons'));<br>
+            </code>
         </aside>
     </div>
     <div class="flexible_row">
@@ -108,20 +107,21 @@
         <aside class="mission">
             <p>La requête est constituée d’un groupement entre les catégories et le chiffre d’affaires, ce dernier
                 calculer par la somme des prix unitaire de chaque produits.</p>
-            <p>Voici le code généré par cette requête.<br><code>
-                SELECT c.NomCateg , Sum(p.PrixUnit) AS Chiffre_daffaire
-                FROM Categorie AS c
-                INNER JOIN produit AS p
-                ON c.CodeCateg = p.CodeCateg
-                WHERE c.NomCateg IN ("Desserts", "Boissons")
-                GROUP BY c.NomCateg;
-            </code></p>
+            <p>Voici le code généré par cette requête.</p>
+            <br>
+            <code>
+                SELECT c.NomCateg , Sum(p.PrixUnit) AS Chiffre_daffaire <br>
+                FROM Categorie AS c <br>
+                INNER JOIN produit AS p ON c.CodeCateg = p.CodeCateg <br>
+                WHERE c.NomCateg IN ("Desserts", "Boissons") <br>
+                GROUP BY c.NomCateg; <br>
+            </code>
         </aside>
     </div>
 </section>
 
 <section class="section_mission_p3" id="offrekdou">
-    <h2>Offre de KDou</h2>
+    <h2 class="titre">Offre de KDou</h2>
     <div class="flexible_row">
         <article class="mission">
             <h3 class="question">Donner des informations sur les fournisseurs qui proposent des produits qui ne sont pas
@@ -138,23 +138,17 @@
         <aside class="mission">
             <p>Notre requête fait une soustraction entre les produits existants et ceux ayant déjà été commander, en
                 affichant de façon unique les entreprises ayant un produit ou plus non commander avec une jointure.</p>
-            <p>Voici le code généré par cette requête.<br><code>
-                SELECT DISTINCT
-                f.Societe,
-                f.Contact,
-                f.Fonction,
-                f.Adresse,
-                f.Pays
-                FROM Fournisseur AS f
-                INNER JOIN Produit AS p
-                ON f.NoFour = p.NoFour
-                WHERE p.RefProd
-                NOT IN (
-                SELECT dc.RefProd
-                FROM DetailCommande AS dc
-                );
-
-            </code></p>
+            <p>Voici le code généré par cette requête.
+            </p>
+            <br>
+            <code>
+                SELECT DISTINCT f.Societe, f.Contact, f.Fonction, f.Adresse, f.Pays<br>
+                FROM Fournisseur AS f<br>
+                INNER JOIN Produit AS p ON f.NoFour = p.NoFour<br>
+                WHERE p.RefProd NOT IN (<br>
+                &#160;SELECT dc.RefProd<br>
+                &#160;FROM DetailCommande AS dc);<br>
+            </code>
         </aside>
     </div>
     <div class="flexible_row">
@@ -196,24 +190,22 @@
         <aside class="mission">
             <p>Nous avons fait un groupement entre le nom des catégories et la sommes des produits n’ayant pas été
                 commander dans cette catégorie avec une jointure de table.</p>
-            <p>Voici le code généré par cette requête.<br><code>
-                SELECT c.NomCateg,
-                COUNT(c.CodeCateg) AS Non_commandee
-                FROM (Categorie AS c
-                INNER JOIN Produit AS p
-                ON c.CodeCateg = p.CodeCateg)
-                LEFT JOIN DetailCommande AS dc
-                ON p.RefProd = dc.RefProd
-                WHERE (((dc.NoCom) Is Null))
-                GROUP BY c.NomCateg;
-
-            </code></p>
+            <p>Voici le code généré par cette requête.</p>
+            <br>
+            <code>
+                SELECT c.NomCateg, COUNT(c.CodeCateg) AS Non_commandee <br>
+                FROM (Categorie AS c <br>
+                INNER JOIN Produit AS p ON c.CodeCateg = p.CodeCateg) <br>
+                &#160;LEFT JOIN DetailCommande AS dc ON p.RefProd = dc.RefProd <br>
+                WHERE (dc.NoCom) Is Null <br>
+                GROUP BY c.NomCateg; <br>
+            </code>
         </aside>
     </div>
 </section>
 
 <section class="section_mission_p3" id="provenanceproduits">
-    <h2>Provenance des produits</h2>
+    <h2 class="titre">Provenance des produits</h2>
     <div class="flexible_row">
         <article class="mission">
             <h3 class="question">Quels fournisseurs vendent uniquement des boissons ou des desserts ?</h3>
@@ -228,35 +220,31 @@
             <p>La requête fonctionne avec une union entre les fournisseurs ne vendant, uniquement, que des boissons, et
                 ceux ne vendant, uniquement, que des desserts avec des soustractions pour avoir les fournisseurs ne
                 vendant, uniquement ,qu’un type de catégories. Elle affiche le nom des sociétés.</p>
-            <p>Voici le code généré par cette requête.<br><code>
-                SELECT f.Societe
-                FROM Fournisseur AS f
-                WHERE f.NoFour NOT IN (
-                SELECT p.NoFour
-                FROM Produit AS p
-                WHERE p.CodeCateg <> 1
-                )
-                AND f.NoFour IN (
-                SELECT p.NoFour
-                FROM Produit AS p
-                WHERE p.CodeCateg = 1
-                )
-                UNION
-                SELECT f.Societe
-                FROM Fournisseur AS f
-                WHERE f.NoFour NOT IN (
-                SELECT p.NoFour
-                FROM Produit AS p
-                WHERE p.CodeCateg <> 3
-                )
-                AND f.NoFour IN (
-                SELECT p.NoFour
-                FROM Produit AS p
-                WHERE p.CodeCateg = 3
-                );
-
-
-            </code></p>
+            <p>Voici le code généré par cette requête.</p>
+            <br>
+            <code>
+                SELECT f.Societe<br>
+                FROM Fournisseur AS f<br>
+                WHERE f.NoFour NOT IN (<br>
+                &#160;SELECT p.NoFour<br>
+                &#160;FROM Produit AS p<br>
+                &#160;WHERE p.CodeCateg &#60;&#62; 1)<br>
+                &#160;AND f.NoFour IN (<br>
+                &#160;&#160;SELECT p.NoFour<br>
+                &#160;&#160;FROM Produit AS p<br>
+                &#160;&#160;WHERE p.CodeCateg = 1)<br>
+                UNION<br>
+                &#160;SELECT f.Societe<br>
+                &#160;FROM Fournisseur AS f<br>
+                &#160;WHERE f.NoFour NOT IN (<br>
+                &#160;&#160;SELECT p.NoFour<br>
+                &#160;&#160;FROM Produit AS p<br>
+                &#160;&#160;WHERE p.CodeCateg &#60;&#62; 3)<br>
+                &#160;AND f.NoFour IN (<br>
+                &#160;&#160;SELECT p.NoFour<br>
+                &#160;&#160;FROM Produit AS p<br>
+                &#160;&#160;WHERE p.CodeCateg = 3);<br>
+            </code>
         </aside>
     </div>
     <div class="flexible_row">
@@ -283,33 +271,30 @@
         <aside class="mission">
             <p>La requête est constituée d’une soustraction entre les fournisseurs vendant des boissons et des desserts,
                 par ceux vendant des produits d’autre catégories. Elle affiche le nom des sociétés fournisseurs.</p>
-            <p>Voici le code généré par cette requête.<br><code>
-                SELECT DISTINCT f.Societe
-                FROM Fournisseur AS f
-                WHERE f.NoFour IN (
-                SELECT p1.NoFour
-                FROM Produit AS p1
-                WHERE p1.CodeCateg = 1
-                )
-                AND f.NoFour IN (
-                SELECT p2.NoFour
-                FROM Produit AS p2
-                WHERE p2.CodeCateg = 3
-                )
-                AND f.NoFour NOT IN (
-                SELECT p3.NoFour
-                FROM Produit AS p3
-                WHERE p3.CodeCateg NOT IN (1, 3)
-                );
-
-
-            </code></p>
+            <p>Voici le code généré par cette requête.</p>
+            <br>
+            <code>
+                SELECT DISTINCT f.Societe<br>
+                FROM Fournisseur AS f<br>
+                WHERE f.NoFour IN (<br>
+                &#160;SELECT p1.NoFour<br>
+                &#160;FROM Produit AS p1<br>
+                &#160;WHERE p1.CodeCateg = 1)<br>
+                AND f.NoFour IN (<br>
+                &#160;SELECT p2.NoFour<br>
+                &#160;FROM Produit AS p2<br>
+                &#160;WHERE p2.CodeCateg = 3)<br>
+                AND f.NoFour NOT IN (<br>
+                &#160;SELECT p3.NoFour<br>
+                &#160;FROM Produit AS p3<br>
+                &#160;WHERE p3.CodeCateg NOT IN (1, 3));<br>
+            </code>
         </aside>
     </div>
 </section>
 
 <section class="section_mission_p3" id="clientele">
-    <h2>Clientèle / Remises</h2>
+    <h2 class="titre">Clientèle / Remises</h2>
     <div class="flexible_row">
         <article class="mission">
             <h3 class="question">Certains clients n’ont jamais eu la remise la plus importante de 25%. Qui sont-ils
@@ -324,21 +309,20 @@
         <aside class="mission">
             <p>Nous avons effectué une double jointure a droite sur les tables de commande et de détails des commandes
                 de depuis la table clients, pour y soustraire tous les clients ayant déjà eu des remises de 25%.</p>
-            <p>Voici le code généré par cette requête.<br><code>
-                SELECT DISTINCT cl.SocieteCli, cl.Contactcli, cl.AdresseCli, cl.VilleCli
-                FROM (Client AS cl
-                LEFT JOIN Commande AS co
-                ON cl.CodeCli = co.CodeCli)
-                LEFT JOIN DetailCommande AS dc
-                ON co.NoCom = dc.NoCom
-                WHERE cl.CodeCli NOT IN (
-                SELECT co.CodeCli
-                FROM Commande AS co
-                INNER JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom
-                WHERE dc.Remise = 0.25
-                )
-                AND dc.Remise < 0.25;
-            </code></p>
+            <p>Voici le code généré par cette requête.</p>
+            <br>
+            <code>
+                SELECT DISTINCT cl.SocieteCli, cl.Contactcli, cl.AdresseCli, cl.VilleCli<br>
+                FROM (Client AS cl<br>
+                LEFT JOIN Commande AS co ON cl.CodeCli = co.CodeCli)<br>
+                &#160;LEFT JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom<br>
+                WHERE cl.CodeCli NOT IN (<br>
+                &#160;SELECT co.CodeCli<br>
+                &#160;FROM Commande AS co<br>
+                &#160;INNER JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom<br>
+                &#160;WHERE dc.Remise = 0.25)<br>
+                AND dc.Remise &#60; 0.25;<br>
+            </code>
         </aside>
     </div>
     <div class="flexible_row">
@@ -377,27 +361,29 @@
             <p>Nous avons construit la requête de sorte que nous soustrayons les clients ayant des remises ne
                 correspondant pas a 10%, 20% ou aucune remise. Nous affichons le nom de la société du client, leurs
                 contacts, adresses et villes.</p>
-            <p>Voici le code généré par cette requête.<br><code>
-                SELECT DISTINCT cl.SocieteCli, cl.Contactcli, cl.AdresseCli, cl.VilleCli
-                FROM (Client AS cl
-                LEFT JOIN Commande AS co ON cl.CodeCli = co.CodeCli)
-                LEFT JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom
-                WHERE cl.CodeCli NOT IN (
-                SELECT co.CodeCli
-                FROM Commande AS co
-                INNER JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom
-                WHERE dc.Remise > 0.01 AND dc.Remise < 0.09)
-                AND cl.CodeCli NOT IN (
-                SELECT co.CodeCli
-                FROM Commande AS co
-                INNER JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom
-                WHERE dc.Remise > 0.11 AND dc.Remise < 0.19)
-                AND cl.CodeCli NOT IN (
-                SELECT co.CodeCli
-                FROM Commande AS co
-                INNER JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom
-                WHERE dc.Remise > 0.21);
-            </code></p>
+            <p>Voici le code généré par cette requête.</p>
+            <br>
+            <code>
+                SELECT DISTINCT cl.SocieteCli, cl.Contactcli, cl.AdresseCli, cl.VilleCli<br>
+                FROM (Client AS cl<br>
+                LEFT JOIN Commande AS co ON cl.CodeCli = co.CodeCli)<br>
+                &#160;LEFT JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom<br>
+                WHERE cl.CodeCli NOT IN (<br>
+                &#160;SELECT co.CodeCli<br>
+                &#160;FROM Commande AS co<br>
+                &#160;>INNER JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom<br>
+                &#160;WHERE dc.Remise &#62; 0.01 AND dc.Remise &#60; 0.09)<br>
+                AND cl.CodeCli NOT IN (<br>
+                &#160;SELECT co.CodeCli<br>
+                &#160;FROM Commande AS co<br>
+                &#160;INNER JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom<br>
+                &#160;WHERE dc.Remise &#62; 0.11 AND dc.Remise &#60; 0.19)<br>
+                AND cl.CodeCli NOT IN (<br>
+                &#160;SELECT co.CodeCli<br>
+                &#160;FROM Commande AS co<br>
+                &#160;INNER JOIN DetailCommande AS dc ON co.NoCom = dc.NoCom<br>
+                &#160;WHERE dc.Remise &#62; 0.21);<br>
+            </code>
         </aside>
     </div>
 </section>
@@ -413,7 +399,7 @@
 </section>
 
 <section class="section_mission_p5" id="Sam">
-    <h2>Sam</h2>
+    <h2 class="titre">Sam</h2>
     <div class="flexible_row">
         <article class="mission">
             <h3 class="question">Objectif de l'indicateur:</h3>
@@ -484,49 +470,41 @@
             <p>Création de la requête :</p>
             <p>La table crée avec cette première requête permet de voir le nombre d’article vendu par categorie
                 :</p>
-            <pre>
-            <code class="bigger_code">
-SELECT ca.CodeCateg,
-COUNT(co.NoCom) AS Nombre_commande
-FROM Commande AS co
-INNER JOIN ((Categorie AS ca
-        RIGHT JOIN Produit AS p ON ca.CodeCateg = p.CodeCateg)
-    INNER JOIN DetailCommande AS dc ON p.RefProd = dc.RefProd)
-ON co.NoCom = dc.NoCom
-GROUP BY ca.CodeCateg
-ORDER BY Count(co.NoCom) DESC;
+            <code>
+                SELECT ca.CodeCateg, COUNT(co.NoCom) AS Nombre_commande<br>
+                FROM Commande AS co<br>
+                INNER JOIN ((Categorie AS ca<br>
+                &#160;&#160;RIGHT JOIN Produit AS p ON ca.CodeCateg = p.CodeCateg)<br>
+                &#160;INNER JOIN DetailCommande AS dc ON p.RefProd = dc.RefProd)<br>
+                ON co.NoCom = dc.NoCom<br>
+                GROUP BY ca.CodeCateg<br>
+                ORDER BY Count(co.NoCom) DESC;<br>
             </code>
-                </pre>
             <br>
             <p>La table crée avec cette seconde requête permet de voir le chiffre d’affaires de chaque catégorie
                 :</p>
-            <pre>
-            <code class="bigger_code">
-SELECT c.CodeCateg,
-SUM(p.PrixUnit) AS Chiffre_daffaire
-FROM Categorie AS c
-INNER JOIN produit AS p ON c.CodeCateg = p.CodeCateg
-GROUP BY c.CodeCateg;
+            <code>
+                SELECT c.CodeCateg,SUM(p.PrixUnit) AS Chiffre_daffaire <br>
+                FROM Categorie AS c <br>
+                INNER JOIN produit AS p ON c.CodeCateg = p.CodeCateg <br>
+                GROUP BY c.CodeCateg; <br>
             </code>
-                </pre>
             <br>
             <p>Cette dernière requête permet de regrouper les résultats des deux en une même table :</p>
-            <pre>
-                <code class="bigger_code">
-SELECT c.NomCateg, [R2].chiffre_daffaire, [R1].NombreDeCommande
-FROM R2
-INNER JOIN(R1
-    INNER JOIN Categorie AS c ON [R1].CodeCateg=c.CodeCateg)
-ON [R2].CodeCateg=c.CodeCateg;
+            <code>
+                SELECT c.NomCateg, [R2].chiffre_daffaire, [R1].NombreDeCommande <br>
+                FROM R2 <br>
+                INNER JOIN(R1 <br>
+                &#160;INNER JOIN Categorie AS c ON [R1].CodeCateg=c.CodeCateg) <br>
+                ON [R2].CodeCateg=c.CodeCateg; <br>
             </code>
-                </pre>
             <br>
         </aside>
     </div>
 </section>
 
 <section class="section_mission_p5" id="Yanis">
-    <h2>Yanis</h2>
+    <h2 class="titre">Yanis</h2>
     <div class="flexible_row">
         <article class="mission">
             <h3 class="question">Objectif de l'indicateur:</h3>
@@ -541,22 +519,19 @@ ON [R2].CodeCateg=c.CodeCateg;
         <div class="separateur_vertical_solid"></div>
         <aside class="mission">
             <p>Création de la requête :</p>
-            <pre>
-            <code class="bigger_code">
-SELECT P.NomProd,
-SUM(DC.QteCom*DC.PrixUnitCli*(1-DC.Remise)) AS TotalRecette
-FROM Produit AS P
-INNER JOIN DetailCommande AS DC ON P.RefProd = DC.RefProd
-GROUP BY P.NomProd
-ORDER BY Sum(DC.QteCom*DC.PrixUnitCli*(1-DC.Remise)) DESC;
+            <code>
+                SELECT P.NomProd, SUM(DC.QteCom*DC.PrixUnitCli*(1-DC.Remise)) AS TotalRecette <br>
+                FROM Produit AS P <br>
+                INNER JOIN DetailCommande AS DC ON P.RefProd = DC.RefProd <br>
+                GROUP BY P.NomProd <br>
+                ORDER BY Sum(DC.QteCom*DC.PrixUnitCli*(1-DC.Remise)) DESC; <br>
             </code>
-            </pre>
         </aside>
     </div>
 </section>
 
 <section class="section_mission_p5" id="Mathieu">
-    <h2>Mathieu</h2>
+    <h2 class="titre">Mathieu</h2>
     <div class="flexible_row">
         <article class="mission">
             <h3 class="question">Objectif de l'indicateur:</h3>
@@ -644,24 +619,21 @@ ORDER BY Sum(DC.QteCom*DC.PrixUnitCli*(1-DC.Remise)) DESC;
                 cette
                 catégorie.
             </p>
-            <pre>
-            <code class="bigger_code">
-SELECT DISTINCT Client.CodeCli, Client.SocieteCli, Client.ContactCli,
-Client.Téléphone
-FROM Client
-    INNER JOIN Commande ON Client.CodeCli = Commande.CodeCli
-        INNER JOIN DetailCommande ON Commande.NoCom = DetailCommande.NoCom
-                INNER JOIN Produit ON DetailCommande.RefProd = Produit.RefProd
-                    INNER JOIN Categorie ON Produit.CodeCateg = Categorie.CodeCateg
-WHERE Categorie.NomCateg = "Poissons et fruits de mer";
+            <code>
+                SELECT DISTINCT Client.CodeCli, Client.SocieteCli, Client.ContactCli,Client.Téléphone <br>
+                FROM Client <br>
+                INNER JOIN Commande ON Client.CodeCli = Commande.CodeCli <br>
+                &#160;INNER JOIN DetailCommande ON Commande.NoCom = DetailCommande.NoCom <br>
+                &#160;&#160;INNER JOIN Produit ON DetailCommande.RefProd = Produit.RefProd <br>
+                &#160;&#160;&#160;INNER JOIN Categorie ON Produit.CodeCateg = Categorie.CodeCateg <br>
+                WHERE Categorie.NomCateg = "Poissons et fruits de mer"; <br>
             </code>
-                </pre>
         </aside>
     </div>
 </section>
 
 <section class="section_mission_p5" id="Dat">
-    <h2>Dat</h2>
+    <h2 class="titre">Dat</h2>
     <div class="flexible_row">
         <article class="mission">
             <h3 class="question">Objectif de l'indicateur:</h3>
@@ -678,16 +650,14 @@ WHERE Categorie.NomCateg = "Poissons et fruits de mer";
         <div class="separateur_vertical_solid"></div>
         <aside class="mission">
             <p>Création de la requête :</p>
-            <pre>
-            <code class="bigger_code">
-SELECT p.NomProd, p.PrixUnit, f.Pays
-FROM Fournisseur AS f
-INNER JOIN (Categorie AS c
-    INNER JOIN Produit AS p ON c.CodeCateg = p.CodeCateg)
-ON f.NoFour = p.NoFour
-WHERE (((p.prixUnit)>=50) AND ((c.NomCateg)='Desserts' OR (c.NomCateg)='Boissons'));
+            <code>
+                SELECT p.NomProd, p.PrixUnit, f.Pays <br>
+                FROM Fournisseur AS f <br>
+                INNER JOIN (Categorie AS c <br>
+                &#160;INNER JOIN Produit AS p ON c.CodeCateg = p.CodeCateg) <br>
+                ON f.NoFour = p.NoFour <br>
+                WHERE (((p.prixUnit)>=50) AND ((c.NomCateg)='Desserts' OR (c.NomCateg)='Boissons')); <br>
             </code>
-            </pre>
         </aside>
     </div>
 </section>

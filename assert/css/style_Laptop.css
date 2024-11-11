@@ -3,6 +3,7 @@ body {
     background-color: #F3F7D4;
     margin: 0;
     width: 100%;
+    font-family: Trebuchet, sans-serif;
 }
 
 .grid {
@@ -36,6 +37,8 @@ header {
 header h1 {
     font-size: 25px;
     justify-self: center;
+    font-family: Courrier, sans-serif;
+    font-variant: small-caps;
 }
 
 /* Style du bouton de menu */
@@ -51,7 +54,8 @@ header h1 {
     border: black solid 1px;
     border-radius: 20px;
     box-shadow: -1px -2px black;
-    font-family: 'Arial Black', sans-serif;
+    font-family: Courrier, sans-serif;
+    font-weight: bold;
 }
 
 .nav {
@@ -99,6 +103,7 @@ nav ul li a {
     max-width: 100%;
     cursor: pointer;
     padding: 0;
+    font-family: Tahoma, sans-serif;
 }
 
 .bouton_nav a {
@@ -192,10 +197,6 @@ p {
     font-size: 20px;
 }
 
-code {
-    font-size: 80%;
-}
-
 .gras {
     font-weight: bold;
 }
@@ -274,6 +275,10 @@ h1.titre {
     font-variant: small-caps;
 }
 
+.titre {
+    font-family: Courrier, sans-serif;
+}
+
 .flexible_center > .resultat_sql {
     width: 100%;
     max-width: 40em;
@@ -292,7 +297,7 @@ h2.titre {
     font-weight: normal;
     text-decoration: underline;
     font-variant: small-caps;
-
+    font-family: Courrier, sans-serif;
 }
 
 .liste_def_espace > dd {
@@ -357,10 +362,13 @@ img {
     border: 1px solid #ccc;
 }
 
-.bigger_code {
+
+code {
+    font-family: Courier, monospace;
+    font-style: italic;
+    font-weight: lighter;
     font-size: 110%;
 }
-
 
 .section_mission_p3 #dessertboissons,
 .section_mission_p3 #offrekdou,
@@ -429,6 +437,8 @@ footer {
 
 footer li {
     list-style-type: none;
+    font-family: Tahoma, sans-serif;
+
 }
 
 footer p {
@@ -436,6 +446,7 @@ footer p {
     color: white;
     margin-top: 20px;
     font-size: 10px;
+    font-family: Tahoma, sans-serif;
 }
 
 .footer {
@@ -448,7 +459,7 @@ footer p {
     margin-right: 4em;
 }
 
-footer a:hover {
+footer a:hover, #aside_index a:hover {
     padding: 5px;
     border-radius: 10px;
     background-color: #116346;
