@@ -1,4 +1,4 @@
-/* Style de base */
+/* Style de fond */
 body {
     background-color: #F3F7D4;
     margin: 0;
@@ -7,17 +7,13 @@ body {
 
 }
 
+/* Implementation de la grille */
 .grid {
     display: grid;
     grid-template-columns: 1fr; /* Trois colonnes de largeur égale */
     grid-template-rows: auto auto 1fr; /* Deux lignes auto-hauteur et le reste dans la 3ème */
     gap: 10px;
     width: 100%;
-}
-
-a {
-    text-decoration: none;
-    color: black;
 }
 
 /* Style du header*/
@@ -35,15 +31,16 @@ header {
 #menuToggle {
     display: none; /* Cacher le checkbox */
 }
-
-header h1{
+h1{
     font-size: 20px;
     justify-self: center;
     font-family: Courrier, sans-serif;
     font-variant: small-caps;
+    display: flex;
+    justify-content: center;
 }
 
-/* Style du bouton de menu */
+/* Style du bouton de menu*/
 .menu-button {
     padding: 10px 20px;
     background-color: #448D76;
@@ -71,7 +68,6 @@ header h1{
 #menuToggle:checked + label.menu-button{
     background-color: #67B59F;
 }
-
 #menuToggle:checked + label + .nav {
     display: flex;
     flex-direction: column;
@@ -87,11 +83,9 @@ nav ul {
     padding: 0;
     background-color: #448D76;
 }
-
 nav ul li {
     margin: 10px 0;
 }
-
 nav ul li a {
     text-decoration: none;
     color: black;
@@ -108,7 +102,6 @@ nav ul li a {
     cursor: pointer;
     font-family: Tahoma, sans-serif;
 }
-
 .bouton_nav a {
     display: block;
     width: 100%;
@@ -117,7 +110,6 @@ nav ul li a {
     box-sizing: border-box;
     color: black;
 }
-
 .bouton_nav:hover {
     background-color: #67B59F;
 }
@@ -127,7 +119,6 @@ nav ul li a {
     width: 85%;
     margin: 0 auto;
 }
-
 .blocs_mission, .blocs_conclu, #presentation {
     display: flex;
     flex-direction: column;
@@ -135,13 +126,11 @@ nav ul li a {
     margin-top: 1em;
     margin-bottom: 1em;
 }
-
 .blocs_conclu .bouton_nav, .blocs_mission .bouton_nav{
     padding : 0.5em;
     width: 85%;
     margin:0 auto;
 }
-
 
 /* Style pour la page de presentation */
 #section_index {
@@ -149,7 +138,7 @@ nav ul li a {
     grid-row: 2;
     margin-top: 7em;
     margin-left: 2em;
-    padding-right: 2em;
+    padding-right: 5%;
     font-size: 20px;
 }
 
@@ -159,30 +148,29 @@ nav ul li a {
     margin-top: 7em;
     margin-right: 2em;
     font-size: 15px;
-    padding-left: 2em;
+    padding-left: 5%;
 }
 
-/* Style pour les 3 missions */
+/* Style pour les pages */
+
+/* Style pour les missions */
+/* PLacement dans la grille d'espaces pour les missions */
 .section_mission_p1 {
     grid-column: 1 ;
     grid-row: 2;
 }
-
 .section_mission_p2 {
     grid-column: 1 ;
     grid-row: 3;
 }
-
 .section_mission_p3 {
     grid-column: 1 ;
     grid-row: 4;
 }
-
 .section_mission_p4 {
     grid-column: 1 ;
     grid-row: 5;
 }
-
 .section_mission_p5 {
     grid-column: 1;
     grid-row: 6;
@@ -191,161 +179,10 @@ nav ul li a {
 .section_mission_p1, .section_mission_p2, .section_mission_p3,
 .section_mission_p4, .section_mission_p5 {
     margin-top: 7em;
-    margin-left: 2em;
-    padding-right: 2em;
+    margin-left: 5%;
+    padding-right: 5%;
     width: 95%;
     box-sizing: border-box;
-}
-
-p {
-    font-size: 15px;
-}
-
-.gras {
-    font-weight: bold;
-}
-
-.liste_square_inside li {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    list-style-type: square;
-    list-style-position: inside ;
-}
-
-li.sans_decoration{
-    list-style-type:none;
-}
-
-code {
-    font-family: Courier, monospace;
-    font-style: italic;
-    font-weight: lighter;
-    font-size: 80%;
-}
-
-.separateur_horizontal_solid {
-    border: none;
-    height: 1px;
-    background-color: black;
-    margin: 40px 0;
-}
-
-.separateur_horizontal_dashed {
-    border: none;
-    height: 1px;
-    border-top: 1px dashed black;
-    margin: 40px 0;
-}
-
-.resultat_sql, .resultat_sql td, .resultat_sql th {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-.resultat_sql th, .resultat_sql td {
-    padding: 0.5em;
-}
-
-.resultat_sql td{
-    text-align: right;
-}
-
-.resultat_sql caption , .information_textuelle caption{
-    font-weight: bold;
-    padding-bottom: 1em;
-}
-
-.information_textuelle {
-    border: 2px dashed black;
-    border-collapse: collapse;
-}
-
-.information_textuelle td, .information_textuelle th {
-    border: 1px solid black;
-    border-collapse: collapse;
-    text-align:center;
-    padding: 0.5em;
-}
-
-.information_textuelle th{
-    font-variant: small-caps;
-}
-
-.flexible_center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.flexible_align_left {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-}
-
-h2.titre {
-    font-weight: bold;
-    font-size: 2em;
-    font-variant: small-caps;
-}
-
-h3.titre {
-    font-weight: bold;
-    font-size: 1.5em;
-    font-variant: small-caps;
-    margin-left: 3em;
-}
-
-h4.titre {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-left: 3em;
-}
-
-.titre {
-    font-family: Courrier, sans-serif;
-}
-
-.flexible_center > .resultat_sql {
-    width: 100%;
-    max-width: 40em;
-
-}
-
-.question {
-    font-size: 1.2em;
-    font-weight: normal;
-    text-decoration: underline;
-    font-variant: small-caps;
-    font-family: Courrier, sans-serif;
-}
-
-.liste_def_espace > dd {
-    padding-bottom: 1em;
-}
-
-.liste_def_espace > dt {
-    font-weight: bold;
-}
-
-.list_fleche ul {
-    list-style-type: none;
-}
-
-.list_fleche li {
-    padding-top: 1.5em;
-    list-style-type: none;
-}
-
-.list_fleche li::before {
-    content: "→ ";
-    color: black;
-    font-size: 1.2em;
-}
-
-img{
-    width: 40vw;
-    height: auto;
 }
 
 .mission {
@@ -353,7 +190,6 @@ img{
     flex-wrap: wrap;
     width: 100%;
 }
-
 .mission .resultat_sql {
     width: 40vw;
     max-width: 100%;
@@ -363,12 +199,12 @@ img{
 
 /* Style pour la mission 3 */
 
+/* Style des boutons de navigations */
 .nav_mission3 {
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
 }
-
 .bouttonmission3 {
     font-size: 18px;
     margin: 0 5px;
@@ -378,11 +214,9 @@ img{
     border: 2px solid black;
     border-radius: 20px;
 }
-
 .bouttonmission3:hover {
     border: 1px solid #ccc;
 }
-
 
 .section_mission_p3 #dessertboissons,
 .section_mission_p3 #offrekdou,
@@ -408,34 +242,30 @@ img{
 }
 
 /* Style pour la conclusion BDD */
-
 #section_conclusion_kdou {
     grid-column: 1 / 4;
     grid-row: 1;
     margin-top: 7em;
-    margin-left: 2em;
-    padding-right: 2em;
+    margin-left: 5%;
+    padding-right: 5%;
     font-size: 20px;
 }
 
-
 /* Style pour la conclusion du web */
-
 #section_conclusion_web1 {
     grid-column: 1 / 4;
     grid-row: 1;
     margin-top: 7em;
-    margin-left: 2em;
-    padding-right: 2em;
+    margin-left: 5%;
+    padding-right: 5%;
     font-size: 20px;
 }
-
 #section_conclusion_web2 {
     grid-column: 1 / 4;
     grid-row: 2;
     margin-top: 7em;
-    margin-left: 2em;
-    padding-right: 2em;
+    margin-left: 5%;
+    padding-right: 5%;
     font-size: 20px;
 }
 
@@ -446,19 +276,16 @@ footer {
     background-color: #0c4732;
     width: 100%;
 }
-
 footer h5 {
     font-size: 2em;
     font-weight: bold;
     margin: 0 auto;
 }
-
 footer li {
     list-style-type: none;
     font-family: Tahoma, sans-serif;
 
 }
-
 footer p {
     text-align: center;
     color: white;
@@ -467,7 +294,6 @@ footer p {
     font-family: Tahoma, sans-serif;
 
 }
-
 .footer {
     display: flex;
     flex-direction: column;
@@ -478,9 +304,153 @@ footer p {
     margin-right: 4em;
 }
 
+
+/* Style utilisable dans toutes les pages */
+
+
+/* Style de séparateur horizontaux */
+.separateur_horizontal_solid {
+    border: none;
+    height: 1px;
+    background-color: black;
+    margin: 40px 0;
+}
+.separateur_horizontal_dashed {
+    border: none;
+    height: 1px;
+    border-top: 1px dashed black;
+    margin: 40px 0;
+}
+
+/* Style des tableaux */
+.resultat_sql, .resultat_sql td, .resultat_sql th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.resultat_sql th, .resultat_sql td {
+    padding: 0.5em;
+}
+.resultat_sql td{
+    text-align: right;
+}
+.resultat_sql caption , .information_textuelle caption{
+    font-weight: bold;
+    padding-bottom: 1em;
+}
+.information_textuelle {
+    border: 2px dashed black;
+    border-collapse: collapse;
+}
+.information_textuelle td, .information_textuelle th {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align:center;
+    padding: 0.5em;
+}
+.information_textuelle th{
+    font-variant: small-caps;
+}
+
+/* Conteneur de placement */
+.flexible_center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.flexible_center > .resultat_sql {
+    width: 100%;
+    max-width: 40em;
+
+}
+.flexible_align_left {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+/* Styles des titres */
+h2.titre {
+    font-weight: bold;
+    font-size: 2em;
+    font-variant: small-caps;
+}
+h3.titre {
+    font-weight: bold;
+    font-size: 1.5em;
+    font-variant: small-caps;
+    margin-left: 3em;
+}
+h4.titre {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 3em;
+}
+.titre {
+    font-family: Courrier, sans-serif;
+}
+.question {
+    font-size: 1.2em;
+    font-weight: normal;
+    text-decoration: underline;
+    font-variant: small-caps;
+    font-family: Courrier, sans-serif;
+}
+
+/* Styles pour différents types de liste*/
+.liste_square_inside li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    list-style-type: square;
+    list-style-position: inside ;
+}
+li.sans_decoration{
+    list-style-type:none;
+}
+.liste_def_espace > dd {
+    padding-bottom: 1em;
+}
+.liste_def_espace > dt {
+    font-weight: bold;
+}
+.list_fleche ul {
+    list-style-type: none;
+}
+.list_fleche li {
+    padding-top: 1.5em;
+    list-style-type: none;
+}
+.list_fleche li::before {
+    content: "→ ";
+    color: black;
+    font-size: 1.2em;
+}
+
+/* Style de balises textuelles, codes et images */
+p {
+    font-size: 15px;
+}
+.gras {
+    font-weight: bold;
+}
+code {
+    font-family: Courier, monospace;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 80%;
+}
+img{
+    width: 40vw;
+    height: auto;
+}
+
+/* Style des hyperliens */
 footer a:hover, #aside_index a:hover {
     padding: 5px;
     border-radius: 10px;
     background-color: #116346;
     color: white;
+}
+a {
+    text-decoration: none;
+    color: black;
 }
