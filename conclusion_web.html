@@ -6,7 +6,8 @@
     <title>Compte rendu SAE 1.04 - CREATION D'UNE BASE DE DONNEES</title>
     <link rel="icon" href="/assert/img/favicon.svg">
     <link rel="stylesheet" href="assert/css/style_Laptop.css" media="screen and (min-width: 992px)">
-    <link rel="stylesheet" href="assert/css/style_Mobile_p.css" media="screen and (max-width: 991px)">
+    <link rel="stylesheet" href="assert/css/style_Tablet.css" media="screen and (max-width: 991px) and (min-width: 751px)">
+    <link rel="stylesheet" href="assert/css/style_Phone.css" media="screen and (max-width: 751px)">
 </head>
 <body class="grid">
 <header>
@@ -28,71 +29,86 @@
 </header>
 
 <section id="section_conclusion_web1">
+
     <h2>Organisation du HTLM / CSS</h2>
-    <p>- En groupe nous avons réfléchi au zoning des différentes page, pour ensuite faire un premier wireframe pour
-        ensuite en faire un mockup que nous avons améliorer jusqu’au prototype.</p>
-    <article>
-        <h3>HTML</h3>
-        <ul class="liste_square_inside">
-            <li>6 pages html, chacune avec un thème précis</li>
-            <li>Un entête, une navigation et un pied de page identique dans les 6 pages</li>
-            <li>Une sémantique lisible avec des balise cohérentes</li>
-        </ul>
-    </article>
-    <article>
-        <h3>CSS</h3>
-        <ul class="liste_square_inside">
-            <li>2 pages css</li>
-            <li class="sans_decoration">
-                <ul class="list_fleche">
-                    <li>Une pour tous les écrans ayant une largeur supérieure à 992px sois des écrans d’ordinateur
-                        portable et plus
-                    </li>
-                    <li>Une pour les écrans plus petits, et viable pour des écrans de 750px a 991px donc des tablettes
-                    </li>
-                </ul>
-            </li>
-            <li>Une hiérarchie visuelle permettant la lisibilité de la page</li>
-            <li>Charte graphique simple commune aux pages</li>
-            <li>Utilisation d’une grille pour organiser l’affichage des pages</li>
-            <li>Des classes utilisables et adaptables</li>
-        </ul>
-    </article>
+    <p>- En groupe, nous avons réfléchi au zoning des différentes page, pour ensuite faire un premier wireframe pour
+        ensuite en faire un mockup que nous avons amélioré jusqu’au prototype.</p>
+    <div class="flexible_row">
+        <article>
+            <h3>HTML</h3>
+            <ul class="liste_square_inside">
+                <li>6 pages html, chacune avec un thème précis</li>
+                <li>Un entête, une navigation et un pied de page identique dans les 6 pages</li>
+                <li>Une sémantique lisible avec des balises cohérentes</li>
+            </ul>
+        </article>
+        <div class="separateur_vertical_solid"></div>
+        <article>
+            <h3>CSS</h3>
+            <ul class="liste_square_inside">
+                <li>2 pages css</li>
+                <li class="sans_decoration">
+                    <ul class="list_fleche">
+                        <li>Une pour tous les écrans ayant une largeur supérieure à 992px sois des écrans d’ordinateur
+                            portable et plus
+                        </li>
+                        <li>Une pour les écrans plus petits, et viable pour des écrans de 750px a 991px donc des
+                            tablettes
+                        </li>
+                    </ul>
+                </li>
+                <li>Une hiérarchie visuelle permettant la lisibilité de la page</li>
+                <li>Charte graphique simple commune aux pages</li>
+                <li>Utilisation d’une grille pour organiser l’affichage des pages</li>
+                <li>Des classes utilisables et adaptables</li>
+            </ul>
+        </article>
+    </div>
+    <hr class="separateur_horizontal_solid">
     <article>
         <h3>CHARTE GRAPHIQUE</h3>
-        <ul class="liste_square_inside">
-            <li>Couleur de fond</li>
-            <li class="sans_decoration">
-                <ul class="list_fleche">
-                    <li>Fond : #F3F7D4</li>
-                    <li>En-tete: #448D76</li>
-                    <li>Bouton de navigation: #2b7e64</li>
-                    <li>Survol des boutons de navigation : #67B59F</li>
-                    <li>Pied de page : #0c4732</li>
-                    <li>Survol des boutons du pied de page et de l’aside : #116346</li>
-                </ul>
-            </li>
-            <li>Couleur de texte</li>
-            <li class="sans_decoration">
-                <ul class="list_fleche">
-                    <li>Texte: black</li>
-                    <li>Survol des boutons du pied de page et de l’aside : white</li>
-                </ul>
-            </li>
-            <li>Police de caractère</li>
-            <li class="sans_decoration">
-                <ul class="list_fleche">
-                    <li>Titre du menu : Courrier, sans-serif</li>
-                    <li>Bouton menu : Courrier, sans-serif</li>
-                    <li>Bouton de la barre de navigation : Tahoma, sans-serif</li>
-                    <li>Pied de page : Arial, sans-serif</li>
-                    <li>Titre des sections: Courrier, sans-serif</li>
-                    <li>Section de SQL : Courier, monospace</li>
-                    <li>Reste des textes de la page :Trebuchet, sans-serif</li>
-                </ul>
-            </li>
-        </ul>
+        <div class="flexible_row">
+            <ul class="liste_square_inside">
+                <li><b>Couleur de fond</b></li>
+                <li class="sans_decoration">
+                    <ul class="list_fleche">
+                        <li>Fond : <em>#F3F7D4</em></li>
+                        <li>En-tete: <em>#448D76</em></li>
+                        <li>Bouton de navigation: <em>#2b7e64</em></li>
+                        <li>Survol des boutons de navigation : <em>#67B59F</em></li>
+                        <li>Pied de page : <em>#0c4732</em></li>
+                        <li>Survol des boutons du pied de page et de l’aside : <em>#116346</em></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="separateur_vertical_dashed"></div>
+            <ul>
+                <li><b>Couleur de texte</b></li>
+                <li class="sans_decoration">
+                    <ul class="list_fleche">
+                        <li>Texte: <em>black</em></li>
+                        <li>Survol des boutons du pied de page et de l’aside : <em>white</em></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="separateur_vertical_dashed"></div>
+            <ul>
+                <li><b>Police de caractère</b></li>
+                <li class="sans_decoration">
+                    <ul class="list_fleche">
+                        <li>Titre du menu : <em>Courrier, sans-serif</em></li>
+                        <li>Bouton menu : <em>Courrier, sans-serif</em></li>
+                        <li>Bouton de la barre de navigation : <em>Tahoma, sans-serif</em></li>
+                        <li>Pied de page : <em>Arial, sans-serif</em></li>
+                        <li>Titre des sections: <em>Courrier, sans-serif</em></li>
+                        <li>Section de SQL : <em>Courier, monospace</em></li>
+                        <li>Reste des textes de la page : <em>Trebuchet, sans-serif</em></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </article>
+
 </section>
 
 <section id="section_conclusion_web2">

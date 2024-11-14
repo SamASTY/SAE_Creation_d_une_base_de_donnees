@@ -4,11 +4,12 @@ body {
     margin: 0;
     width: 100%;
     font-family: Trebuchet, sans-serif;
+
 }
 
 .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* Trois colonnes de largeur égale */
+    grid-template-columns: 1fr; /* Trois colonnes de largeur égale */
     grid-template-rows: auto auto 1fr; /* Deux lignes auto-hauteur et le reste dans la 3ème */
     gap: 10px;
     width: 100%;
@@ -21,7 +22,7 @@ a {
 
 /* Style du header*/
 header {
-    grid-column: 1 / 4;
+    grid-column: 1;
     grid-row: 1;
     background-color: #448D76;
     padding: 0;
@@ -35,8 +36,8 @@ header {
     display: none; /* Cacher le checkbox */
 }
 
-header h1 {
-    font-size: 25px;
+header h1{
+    font-size: 20px;
     justify-self: center;
     font-family: Courrier, sans-serif;
     font-variant: small-caps;
@@ -53,7 +54,7 @@ header h1 {
     left: 50%;
     transform: translate(-50%);
     border: black solid 1px;
-    border-radius: 20px;
+    border-radius: 8px;
     box-shadow: -1px -2px black;
     font-family: Courrier, sans-serif;
     font-weight: bold;
@@ -61,20 +62,22 @@ header h1 {
 
 .nav {
     display: none;
-    padding-top: 2em;
+    padding-top: 4em;
     background-color: #448D76;
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
-#menuToggle:checked + label.menu-button {
+#menuToggle:checked + label.menu-button{
     background-color: #67B59F;
 }
 
 #menuToggle:checked + label + .nav {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    margin-left: 30vw;
 }
 
 nav ul {
@@ -103,7 +106,6 @@ nav ul li a {
     background-color: #2b7e64;
     max-width: 100%;
     cursor: pointer;
-    padding: 0;
     font-family: Tahoma, sans-serif;
 }
 
@@ -120,28 +122,30 @@ nav ul li a {
     background-color: #67B59F;
 }
 
-.blocs_mission, .blocs_conclu {
+#presentation{
+    padding : 0.5em;
+    width: 85%;
+    margin: 0 auto;
+}
+
+.blocs_mission, .blocs_conclu, #presentation {
     display: flex;
     flex-direction: column;
     list-style: none;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
-#presentation {
-    padding: 0.5em 2.5em;
-}
-
-.blocs_mission .bouton_nav {
-    padding: 5px 4.5em;
-}
-
-.blocs_conclu .bouton_nav {
-    padding: 1em 4em;
+.blocs_conclu .bouton_nav, .blocs_mission .bouton_nav{
+    padding : 0.5em;
+    width: 85%;
+    margin:0 auto;
 }
 
 
 /* Style pour la page de presentation */
 #section_index {
-    grid-column: 1 / 3;
+    grid-column: 1;
     grid-row: 2;
     margin-top: 7em;
     margin-left: 2em;
@@ -150,43 +154,42 @@ nav ul li a {
 }
 
 #aside_index {
-    grid-column: 3;
-    grid-row: 2;
+    grid-column: 1;
+    grid-row: 3;
     margin-top: 7em;
     margin-right: 2em;
     font-size: 15px;
+    padding-left: 2em;
 }
 
-
-/* Style pour les pages */
+/* Style pour les 3 missions */
 .section_mission_p1 {
-    grid-column: 1 / 4;
+    grid-column: 1 ;
     grid-row: 2;
 }
 
 .section_mission_p2 {
-    grid-column: 1 / 4;
+    grid-column: 1 ;
     grid-row: 3;
 }
 
 .section_mission_p3 {
-    grid-column: 1 / 4;
+    grid-column: 1 ;
     grid-row: 4;
 }
 
 .section_mission_p4 {
-    grid-column: 1 / 4;
+    grid-column: 1 ;
     grid-row: 5;
 }
 
 .section_mission_p5 {
-    grid-column: 1 / 4;
+    grid-column: 1;
     grid-row: 6;
 }
 
 .section_mission_p1, .section_mission_p2, .section_mission_p3,
 .section_mission_p4, .section_mission_p5 {
-    grid-column: 1 / 4;
     margin-top: 7em;
     margin-left: 2em;
     padding-right: 2em;
@@ -195,7 +198,7 @@ nav ul li a {
 }
 
 p {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .gras {
@@ -206,11 +209,18 @@ p {
     padding-top: 10px;
     padding-bottom: 10px;
     list-style-type: square;
-    list-style-position: inside;
+    list-style-position: inside ;
 }
 
 li.sans_decoration{
     list-style-type:none;
+}
+
+code {
+    font-family: Courier, monospace;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 80%;
 }
 
 .separateur_horizontal_solid {
@@ -220,25 +230,11 @@ li.sans_decoration{
     margin: 40px 0;
 }
 
-.separateur_vertical_solid {
-    width: 1px;
-    height: 15em;
-    margin: 0 40px;
-    background-color: black;
-
-}
-
 .separateur_horizontal_dashed {
     border: none;
     height: 1px;
     border-top: 1px dashed black;
     margin: 40px 0;
-}
-
-.separateur_vertical_dashed {
-    border-left: 1px dashed black;
-    height: 15em;
-    margin: 0 40px;
 }
 
 .resultat_sql, .resultat_sql td, .resultat_sql th {
@@ -249,7 +245,6 @@ li.sans_decoration{
 .resultat_sql th, .resultat_sql td {
     padding: 0.5em;
 }
-
 
 .resultat_sql td{
     text-align: right;
@@ -263,25 +258,17 @@ li.sans_decoration{
 .information_textuelle {
     border: 2px dashed black;
     border-collapse: collapse;
-    text-align:center;
-    padding: 0.5em;
-    max-width: 100%;
 }
 
 .information_textuelle td, .information_textuelle th {
     border: 1px solid black;
     border-collapse: collapse;
+    text-align:center;
+    padding: 0.5em;
 }
 
 .information_textuelle th{
     font-variant: small-caps;
-}
-
-.flexible_row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 10px;
 }
 
 .flexible_center {
@@ -314,7 +301,6 @@ h4.titre {
     font-size: 1.2em;
     margin-left: 3em;
 }
-
 
 .titre {
     font-family: Courrier, sans-serif;
@@ -357,7 +343,7 @@ h4.titre {
     font-size: 1.2em;
 }
 
-img {
+img{
     width: 40vw;
     height: auto;
 }
@@ -376,6 +362,7 @@ img {
 }
 
 /* Style pour la mission 3 */
+
 .nav_mission3 {
     display: flex;
     flex-wrap: wrap;
@@ -396,13 +383,6 @@ img {
     border: 1px solid #ccc;
 }
 
-
-code {
-    font-family: Courier, monospace;
-    font-style: italic;
-    font-weight: lighter;
-    font-size: 110%;
-}
 
 .section_mission_p3 #dessertboissons,
 .section_mission_p3 #offrekdou,
@@ -426,7 +406,6 @@ code {
 #Dat:not(:target) {
     display: none; /* Masque les sections qui ne sont pas ciblées */
 }
-
 
 /* Style pour la conclusion BDD */
 
@@ -462,7 +441,7 @@ code {
 
 /* Style du footer */
 footer {
-    grid-column: 1 / -1;
+    grid-column: 1 ;
     grid-row: 7;
     background-color: #0c4732;
     width: 100%;
@@ -486,12 +465,13 @@ footer p {
     margin-top: 20px;
     font-size: 10px;
     font-family: Tahoma, sans-serif;
+
 }
 
 .footer {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
     font-size: 15px;
     list-style-type: none;
     margin-left: 4em;
