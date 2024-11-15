@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Compte rendu SAE 1.04 - CREATION D'UNE BASE DE DONNEES</title>
-    <link rel="icon" href="/assert/img/favicon.svg">
     <link rel="stylesheet" href="assert/css/style_Laptop.css" media="screen and (min-width: 992px)">
     <link rel="stylesheet" href="assert/css/style_Tablet.css" media="screen and (max-width: 991px) and (min-width: 751px)">
     <link rel="stylesheet" href="assert/css/style_Phone.css" media="screen and (max-width: 751px)">
@@ -28,14 +27,12 @@
 </header>
 <section class="section_mission_p1">
     <h2 class="titre">Context de la mission</h2>
-    <p>Dans cette mission notre but est d’analyser les achats de notre client sur les produits pertinent tous en
-        exploitant les données de ses produits et que le prix et les fournisseurs. Dans chaque cas nous avons un
-        /
+    <p>Dans cette mission notre but est d’analyser les achats de nos clients sur des produits pertinents tout en
+        exploitant les données de ses produits, le prix, les fournisseurs... Dans chaque cas, nous avons un
         des critère(s) de recherche pour étudier un public précis. Nous avons accès à la base de données de Kdou
-        que
-        nous avons bien prise en mains, et nous devons effectuer nos recherches à l’aide du langage SQL. Nous
-        travaillons sur la base de données, cette dernière composée de de
-        6 relations : <b>Fournisseur</b>, <b>Produit</b>
+        que nous avons bien prise en mains, et nous devons effectuer nos recherches à l’aide du langage SQL. Nous
+        travaillons sur la base de données, cette dernière composée de
+        6 tables : <b>Fournisseur</b>, <b>Produit</b>
         , <b>Categorie</b>, <b>Clientele</b>, <b>Commande</b>, <b>DetailCommande</b>.</p>
 </section>
 
@@ -66,7 +63,7 @@
             <p> Elle est constituée d’une double jointure pour avoir accès au tables Catégorie, Produits et
                 Fournisseurs, dans laquelle elle va sélectionner après coup les produits de type Boissons et Dessert
                 avant un prix supérieure ou égal a 50€.</p>
-            <p>Voici le code généré par cette requête.</p>
+            <p>Voici le code généré pour cette requête.</p>
             <br>
             <code>
                 SELECT p.NomProd, p.PrixUnit, f.Pays<br>
@@ -108,7 +105,7 @@
         <aside class="mission">
             <p>La requête est constituée d’un groupement entre les catégories et le chiffre d’affaires, ce dernier
                 calculer par la somme des prix unitaire de chaque produits.</p>
-            <p>Voici le code généré par cette requête.</p>
+            <p>Voici le code généré pour cette requête.</p>
             <br>
             <code>
                 SELECT c.NomCateg , Sum(p.PrixUnit) AS Chiffre_daffaire <br>
@@ -139,7 +136,7 @@
         <aside class="mission">
             <p>Notre requête fait une soustraction entre les produits existants et ceux ayant déjà été commander, en
                 affichant de façon unique les entreprises ayant un produit ou plus non commander avec une jointure.</p>
-            <p>Voici le code généré par cette requête.
+            <p>Voici le code généré pour cette requête.
             </p>
             <br>
             <code>
@@ -193,7 +190,7 @@
         <aside class="mission">
             <p>Nous avons fait un groupement entre le nom des catégories et la sommes des produits n’ayant pas été
                 commander dans cette catégorie avec une jointure de table.</p>
-            <p>Voici le code généré par cette requête.</p>
+            <p>Voici le code généré pour cette requête.</p>
             <br>
             <code>
                 SELECT c.NomCateg, COUNT(c.CodeCateg) AS Non_commandee <br>
@@ -223,7 +220,7 @@
             <p>La requête fonctionne avec une union entre les fournisseurs ne vendant, uniquement, que des boissons, et
                 ceux ne vendant, uniquement, que des desserts avec des soustractions pour avoir les fournisseurs ne
                 vendant, uniquement ,qu’un type de catégories. Elle affiche le nom des sociétés.</p>
-            <p>Voici le code généré par cette requête.</p>
+            <p>Voici le code généré pour cette requête.</p>
             <br>
             <code>
                 SELECT f.Societe<br>
@@ -276,7 +273,7 @@
         <aside class="mission">
             <p>La requête est constituée d’une soustraction entre les fournisseurs vendant des boissons et des desserts,
                 par ceux vendant des produits d’autre catégories. Elle affiche le nom des sociétés fournisseurs.</p>
-            <p>Voici le code généré par cette requête.</p>
+            <p>Voici le code généré pour cette requête.</p>
             <br>
             <code>
                 SELECT DISTINCT f.Societe<br>
@@ -314,7 +311,7 @@
         <aside class="mission">
             <p>Nous avons effectué une double jointure a droite sur les tables de commande et de détails des commandes
                 de depuis la table clients, pour y soustraire tous les clients ayant déjà eu des remises de 25%.</p>
-            <p>Voici le code généré par cette requête.</p>
+            <p>Voici le code généré pour cette requête.</p>
             <br>
             <code>
                 SELECT DISTINCT cl.SocieteCli, cl.Contactcli, cl.AdresseCli, cl.VilleCli<br>
@@ -366,9 +363,9 @@
         <div class="separateur_vertical_solid"></div>
         <aside class="mission">
             <p>Nous avons construit la requête de sorte que nous soustrayons les clients ayant des remises ne
-                correspondant pas a 10%, 20% ou aucune remise. Nous affichons le nom de la société du client, leurs
+                correspondant pas à 10%, 20% ou aucune remise. Nous affichons le nom de la société du client, leurs
                 contacts, adresses et villes.</p>
-            <p>Voici le code généré par cette requête.</p>
+            <p>Voici le code généré pour cette requête.</p>
             <br>
             <code>
                 SELECT DISTINCT cl.SocieteCli, cl.Contactcli, cl.AdresseCli, cl.VilleCli<br>
